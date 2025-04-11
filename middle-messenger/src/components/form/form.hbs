@@ -1,0 +1,12 @@
+<div class="form form_type_{{name}}">
+        <h2 class="form__title">{{title}}</h2>
+        <form class="form__list form__list_type_{{name}}" id={{name}} name={{name}} onSubmit={}>
+            {{#each inputs as |params|}}
+              {{> inputField params=params}}
+            {{/each}}
+            
+          <button class="form__button" type="submit">{{buttontext}}</button>
+          
+        </form>
+        <a class="form__link" href="{{linkpath}}">{{linktext}}</a>
+</div>

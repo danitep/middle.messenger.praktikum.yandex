@@ -1,0 +1,34 @@
+<div class="chat-popup__layout {{#if params.isOpened}} {{else}}chat-popup__layout_hidden{{/if}}">
+    <form class="chat-popup">
+        {{#if params.isAdd}}
+            <p class="chat-popup__title">{{params.addPopup.title}}</p>
+
+            <p class="chat-popup__span">Логин</p>
+            <input type="text" 
+                    class="chat-popup__input" 
+                    id="login" 
+                    name="login" 
+                    onChange={}
+                    placeholder="Логин"
+                    value="{{params.username}}"
+                    required         
+                    minLength=1/>
+            <button class="chat-popup__submit-button" type="submit">{{params.addPopup.buttonText}}</button>
+        {{else}}
+            <p class="chat-popup__title">{{params.removePopup.title}}</p>
+
+            <p class="chat-popup__span">Логин</p>
+            <input type="text" 
+                    class="chat-popup__input" 
+                    id="login" 
+                    name="login" 
+                    onChange={}
+                    placeholder="Логин"
+                    value="{{params.username}}"
+                    required         
+                    minLength=1/>
+            <button class="chat-popup__submit-button" type="submit">{{params.removePopup.buttonText}}</button>
+        {{/if}}
+        
+    </form>
+</div>

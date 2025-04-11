@@ -1,0 +1,66 @@
+.profile{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    &__image-container{
+        margin: 60px 0 0 0;
+        padding: 0;
+        width: 130px;
+        aspect-ratio: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    &__change{
+        margin: 0 0 -100% 0;
+        padding: 0;
+        width: 130px;
+        aspect-ratio: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
+        font-size: 13px;
+        border: none;
+        line-height: 108%;
+        text-align: center;
+        vertical-align: middle;
+        color: #fff;
+        fill:#000;
+        cursor: pointer;
+        z-index: 1;
+        background-color: rgba($color: #000000, $alpha: 0.0);
+        opacity: 0;
+        transition: 
+            background-color  0.3s linear,
+            opacity  0.3s linear;
+        &:hover{
+            background-color: rgba($color: #000000, $alpha: 0.5);
+            opacity: 1;
+        }
+    }
+    &__image{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    &__user{
+        margin: 21px 0 0 0;
+        padding: 0;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 100%;
+        text-align: center;
+
+        &_hidden{
+            color: #FFF;
+        }
+    }
+    
+}

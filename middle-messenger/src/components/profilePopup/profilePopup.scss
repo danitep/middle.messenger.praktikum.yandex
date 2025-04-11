@@ -1,0 +1,93 @@
+.popup{
+    margin:  230px auto 0 auto;
+    width: 340px;
+    height: 257px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.14);
+    background-color: #fff;
+
+    &__layout{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #000000, $alpha: 0.4);
+        z-index: 2;
+
+        &_hidden{
+            visibility: hidden;
+        }
+    }
+    &__title{
+        margin: 40px auto 0 auto;
+        padding: 0;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 133%;
+        text-align: center;
+
+        &_errored{
+            color: #ff2f2f;;
+        }
+    }
+    &__image-name{
+        margin: 45px auto 0 auto;
+        padding: 0;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 114%;
+        text-align: center;
+        color: #8d8d8d;
+    }
+    &__file-button{
+        margin: 45px auto 0 auto;
+        padding: 0;
+        width: 122px;
+        height: 32px;
+        background: none;
+        border: none;
+        font-size: 12px;
+        line-height: 133%;
+        text-decoration: underline;
+        text-decoration-skip-ink: none;
+        text-align: center;
+        color: #3369f3;
+        cursor: pointer;
+    }
+    &__submit-button{
+        margin: auto auto 0 auto;
+        padding: 0;
+        width: 280px;
+        height: 37px;
+        border: none;
+        border-radius: 8px;
+        background: #3369f3;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 100%;
+        text-align: center;
+        color: #fff;
+    }
+    &__error{
+        margin: 15px auto 14px auto;
+        padding: 0;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 100%;
+        text-align: center;
+        color: #ff2f2f;
+
+        &_hidden{
+            visibility: hidden;
+        }
+    }
+}

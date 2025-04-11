@@ -1,0 +1,28 @@
+.page{
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1280px;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', Arial, sans-serif;
+    color: #1e1e1e;
+
+    &__nav{
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+    }
+    &__profile{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+    }
+    &__chat{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+    }
+}

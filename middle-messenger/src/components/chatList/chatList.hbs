@@ -1,0 +1,18 @@
+<div class="chat-list">
+    <div class="chat-list__header">
+        <a class="chat-list__link" href="{{params.profileLink}}">Профиль</a>
+        <input type="text" 
+        class="chat-list__search" 
+        id="search" 
+        name="search" 
+        onChange={}
+        placeholder="Поиск"/>
+    </div>
+    {{> chatBorderLine}}
+    <div class="chat-list__list">
+        {{#each params.chatList as |chat|}}
+            {{> chatLabel params=chat}}
+            {{> chatBorderLine}}
+        {{/each}}
+    </div>
+</div>

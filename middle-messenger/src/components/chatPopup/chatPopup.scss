@@ -1,0 +1,74 @@
+.chat-popup{
+    margin:  232px auto 0 auto;
+    width: 340px;
+    height: 257px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.14);
+    background-color: #fff;
+
+    &__layout{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #000000, $alpha: 0.4);
+        z-index: 2;
+
+        &_hidden{
+            visibility: hidden;
+        }
+    }
+    &__title{
+        margin: 40px auto 0 auto;
+        padding: 0;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 133%;
+        text-align: center;
+        color: #1e1e1e;
+    }
+    &__span{
+        margin: 50px auto 0 30px;
+        padding: 0;
+        font-weight: 500;
+        font-size: 9px;
+        line-height: 100%;
+        color: #999;
+    }
+    &__input{
+        margin: 5px auto 0 30px;
+        padding: 0 0 7px 0;
+        width: calc(100% - 60px);
+        background: none;
+        border: none;
+        border-bottom: 1px solid #3369f3;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 100%;
+        color: #1e1e1e;
+    }
+
+    &__submit-button{
+        margin: 33px 30px 40px 30px;
+        padding: 0;
+        width: 280px;
+        height: 37px;
+        border: none;
+        border-radius: 8px;
+        background: #3369f3;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 100%;
+        text-align: center;
+        color: #fff;
+    }
+}

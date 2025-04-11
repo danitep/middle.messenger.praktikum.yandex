@@ -1,0 +1,72 @@
+
+.field {
+    &__container {
+        margin: 0 auto 16px auto;
+        padding: 0;
+        border: none;
+        display: flex;
+        flex-direction: column;
+
+        
+    }
+
+    &__name {
+        font-weight: 500;
+        font-size: 9px;
+        line-height: 100%;
+        color: #fff;
+        
+        &_active_true{
+            color: #999;
+        }
+    }
+    &__input{
+        margin: 6px 0 0 0;
+        padding: 0 0 5px 0;
+        width: 280px;
+        border: none;
+        border-bottom: 1px solid #3369f3;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 100%;
+
+        &_errored_true{
+            color: #ff2f2f;
+        }
+    }
+    &__error{
+        margin: 7px 0 0 0;
+        padding: 0;
+        font-weight: 400;
+        font-size: 8px;
+        line-height: 100%;
+        color: #ff2f2f;
+        display: none;
+
+        &_active_true{
+            display: block;
+        }
+    }
+    &__button{
+        margin: auto auto 0 auto;
+        
+        border-radius: 8px;
+        width: 280px;
+        height: 37px;
+        background: #3369f3;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 100%;
+        text-align: center;
+        color: #fff;
+    }
+    &__link{
+        margin: 14px auto 30px auto;
+        padding: 0;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 100%;
+        color: #3369f3;
+        text-decoration: none;
+    }
+} 

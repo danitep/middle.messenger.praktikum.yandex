@@ -1,0 +1,11 @@
+<div class="
+additional-popup 
+{{#if params.isActive}}additional-popup_active{{/if}}
+{{#if params.isSettings}}additional-popup_settings{{/if}}
+{{#if params.isAdd}}additional-popup_add{{/if}}
+">
+    {{#each params.buttons as |button|}}
+        {{> chatSettingsRow params=button}}
+    {{/each}}
+</div>
+

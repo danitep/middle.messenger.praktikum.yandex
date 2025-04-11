@@ -1,0 +1,36 @@
+<div class="chat {{#if params.isChatChosen}}{{else}} chat_empty{{/if}}">
+    {{#if params.isChatChosen}}
+        {{> chatHeader params=params.openedChat}}
+        
+        <div class="chat__window">
+            {{#each params.openedChat.packs as |pack|}}
+                <div class="chat__pack">
+                    <p class="chat__date">{{pack.date}}</p>
+                    <div class="chat__messages-container">
+                        {{#each pack.messages as |message|}}
+                            {{> chatMessage params=message}}
+                        {{/each}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        <div class="chat__menu">
+            <button class="chat__button {{#if params.isAddActive}} chat__button_active{{/if}}"></button>
+            <form class="chat__form">
+                <input type="text" 
+                    class="chat__input" 
+                    id="message" 
+                    name="message" 
+                    onChange={}
+                    placeholder="Сообщение"
+                    required         
+                    minLength=1/>
+                <button class="chat__submit" type="submit"></button>
+            </form>
+            
+        </div>
+    {{else}}
+        <p>Выберите чат чтобы отправить сообщение</p>
+    {{/if}}
+</div>
+
