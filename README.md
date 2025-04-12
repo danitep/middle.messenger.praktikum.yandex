@@ -8,11 +8,26 @@
 
 Установить и запустить можно выполнив следующие шаги:
 
-* Клонируйте репозиторий себе в рабочую папку
-* предварительно нужен установленный npm. Можно установить с помощью npm install
-* Перейдите в папку middle-messenger в консоли введя cd ./middle-messenger
-* Установите необходимые библиотеки используя команду npm ci
-* включить режим dev можно путём использования npm runbuilds
+* Установить зависимости проекта 'npm install'
+* Собрать проект можно по 'npm run build'
+* Запустить на Localhost можно по 'npm run start'
+
+## Ссылки
+
+Netlify: https://middle-messenger-danitep.netlify.app
+
+* ссылки на страницы:
+
+main: https://middle-messenger-danitep.netlify.app
+page404: https://middle-messenger-danitep.netlify.app/src/pages/err404
+page500: https://middle-messenger-danitep.netlify.app/src/pages/err5xx
+profile: https://middle-messenger-danitep.netlify.app/src/pages/profile
+login: https://middle-messenger-danitep.netlify.app/src/pages/login
+signin: https://middle-messenger-danitep.netlify.app/src/pages/signin
+chats: https://middle-messenger-danitep.netlify.app/src/pages/chats
+## Ссылка на макет
+
+Figma: https://www.figma.com/design/hbpaOyzO1jQDqeRJZyv536/Chat_external_link--Copy-?m=auto&t=wJb6pvuG84DOX3Kb-6
 
 ## Документация
 
