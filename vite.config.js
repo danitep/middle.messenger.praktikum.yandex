@@ -49,12 +49,12 @@ export default defineConfig({
       err404Params:{
         number: 404,
         greeting: "Не туда попали",
-        link: "../../../index.html"
+        link: "./chats.html"
       },
       err5xxParams:{
         number: 500,
         greeting: "Мы уже фиксим",
-        link: "../../../index.html"
+        link: "./chats.html"
       },
       profileParams:{
         linkpath: "./chats.html",
@@ -174,7 +174,7 @@ export default defineConfig({
           },
           {
             text: "Выйти",
-            link: "",
+            link: "../../index.html",
           },
         ]
       },
