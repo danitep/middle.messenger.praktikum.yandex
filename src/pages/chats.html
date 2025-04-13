@@ -10,13 +10,13 @@
     <title>Vite App</title>
   </head>
   <body class="page">
-    <div class="page__chat">
+    <main class="page__chat">
       {{> chatList params=chatParams}}
       {{> chat params=chatParams }}
       {{#each chatParams.popups as |popup|}}
         {{> chatSettingsPopup params=popup}}
       {{/each}}
       {{> chatPopup params=chatParams.addRemovePopup }}
-    </div>
+    </main>
   </body>
 </html>

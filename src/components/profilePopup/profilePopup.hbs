@@ -13,7 +13,10 @@
         {{#if params.isImageLoaded}}
             <p class="popup__image-name">{{params.fileName}}</p>
         {{else}}
-            <button class="popup__file-button">Выбрать файл на компьютере</button>
+            <div class="popup__file-button">
+                <input type="file" accept=".jpg, .jpeg, .png" name="avatar" class="popup__file-input">
+                <p class="popup__input-text">Выбрать файл на компьютере</p>
+            </div>
         {{/if}}
 
         <button class="popup__submit-button" type="submit">Поменять</button>

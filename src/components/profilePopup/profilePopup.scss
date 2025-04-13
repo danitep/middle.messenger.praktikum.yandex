@@ -55,13 +55,33 @@
         height: 32px;
         background: none;
         border: none;
+        display: flex;
+        flex-direction: column;
+        
+        cursor: pointer;
+        
+        input#file-upload-button{
+            background-color: red;
+        }
+    }
+    &__file-input{
+        margin: 0 0 -32px 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100%;
+        opacity: 0;
+    }
+    &__input-text{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100%;
         font-size: 12px;
         line-height: 133%;
         text-decoration: underline;
         text-decoration-skip-ink: none;
         text-align: center;
         color: #3369f3;
-        cursor: pointer;
     }
     &__submit-button{
         margin: auto auto 0 auto;
