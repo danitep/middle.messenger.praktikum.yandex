@@ -1,0 +1,35 @@
+.profile{
+    &__text-container{
+        margin: 0 0 7px 0;
+        padding: 0 0 10px 0;
+        border: none;
+        border-bottom: 1px solid #eaeaea;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        &:last-child{
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+    }
+    &__input{
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: none;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 100%;
+        text-align: right;
+        color: #999;
+    }
+    &__row-name{
+        margin: 0;
+        padding: 0;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 100%;
+    }
+}

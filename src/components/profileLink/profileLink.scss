@@ -1,0 +1,25 @@
+.profile{
+    &__link{
+        margin: 0 0 9px 0;
+        padding: 0 0 10px 0;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #eaeaea;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 100%;
+        text-align: start;
+        color: #3369f3;
+        text-decoration: none;
+
+        &:last-child{
+            border: none;
+            margin: 0;
+            padding: 0;
+            color: #f00;;
+        }
+    }
+}

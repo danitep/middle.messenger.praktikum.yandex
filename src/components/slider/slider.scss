@@ -1,0 +1,16 @@
+.slider{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    border-right: 1px solid  #eaeaea;
+    background: url(../../static/profile__arrow.svg) center no-repeat #fbfbfb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 64px;
+    height: 100vh;
+    cursor: default;
+}

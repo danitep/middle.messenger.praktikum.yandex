@@ -1,0 +1,27 @@
+.additional-popup{
+    margin: 0;
+    padding: 15px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    background: #fff;
+    position: absolute;
+    border-radius: 12px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.14);
+    background: #fff;
+
+    &_active{
+        display: flex;
+    }
+
+    &_settings{
+        top: 65px;
+        right: 10px;
+    }
+    &_add{
+        left: 321px;
+        bottom: 65px;
+    }
+}
+

@@ -1,0 +1,30 @@
+<form class="profile__form">
+
+    {{#if params.isPasswordEditable}}
+        <div class="profile__row-container">
+            {{#each passwordRows as |row|}}
+                {{> profileRow params=row isEditDisabled=false}}
+            {{/each}}
+        </div>
+
+        <button class="profile__save" type="submit">Сохранить</button>
+    {{else}}
+        <div class="profile__row-container">
+            {{#each profileRows as |row|}}
+                {{> profileRow params=row isEditDisabled=isEditDisabled}}
+            {{/each}}
+        </div>
+
+        {{#if params.isEditDisabled}}
+            <div class="profile__link-container">
+                {{#each params.buttons as |button|}}
+                    {{> profileLink params=button}}
+                {{/each}}
+            </div>
+        {{else}}
+            <button class="profile__save" type="submit">Сохранить</button>
+        {{/if}}
+    {{/if}}
+
+    
+</form>

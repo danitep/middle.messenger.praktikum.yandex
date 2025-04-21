@@ -1,0 +1,25 @@
+<div class="popup__layout {{#if params.isOpened}} {{else}}popup__layout_hidden{{/if}}">
+    <form class="popup">
+        {{#if params.isSubmitErrored}}
+            <p class="popup__title popup__title_errored">Ошибка, попробуйте ещё раз</p>
+        {{else}}
+            {{#if params.isImageLoaded}}
+                <p class="popup__title">Файл загружен</p>
+            {{else}}
+                <p class="popup__title">Загрузите файл</p>
+            {{/if}}
+        {{/if}}
+
+        {{#if params.isImageLoaded}}
+            <p class="popup__image-name">{{params.fileName}}</p>
+        {{else}}
+            <div class="popup__file-button">
+                <input type="file" accept=".jpg, .jpeg, .png" name="avatar" class="popup__file-input">
+                <p class="popup__input-text">Выбрать файл на компьютере</p>
+            </div>
+        {{/if}}
+
+        <button class="popup__submit-button" type="submit">Поменять</button>
+        <p class="popup__error {{#if params.isSubmitEmpty}} {{else}}popup__error_hidden{{/if}}">Нужно выбрать файл</p>
+    </form>
+</div>

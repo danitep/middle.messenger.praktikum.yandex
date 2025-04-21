@@ -1,0 +1,26 @@
+<div class="profile">
+    <div class="profile__image-container">
+        <button class="profile__change">
+            <p >Поменять<br/>аватар</p>
+        </button>  
+        <input type="image" 
+        name="avatar" 
+        class="profile__image" 
+        src={{params.avatarTempPath}} 
+        alt="Аватар">
+    </div>
+
+    {{#if params.isPasswordEditable}}
+        <p class="profile__user profile__user_hidden">{{params.username}}</p>
+    {{else}}
+        {{#if params.isEditDisabled}}
+            <p class="profile__user">{{params.username}}</p>
+        {{else}}
+            <p class="profile__user profile__user_hidden">{{params.username}}</p>
+        {{/if}}
+    {{/if}}
+
+    {{> profileForm profileRows=params.profileRows passwordRows=params.passwordRows isEditDisabled=params.isEditDisabled isPasswordEditable=isPasswordEditable}}
+
+    
+</div>

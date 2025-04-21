@@ -1,0 +1,26 @@
+
+.err-page {
+    &__header {
+        margin: 280px auto 20px auto;
+        font-weight: 500;
+        font-size: 40px;
+        line-height: 100%;
+        text-align: center;
+    }
+    &__greeting {
+        margin: 0 auto 70px auto;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 100%;
+        text-align: center;
+    }
+    &__link {
+        margin: 0 auto 0 auto;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 100%;
+        text-align: center;
+        color: #3369f3;
+    }
+} 
