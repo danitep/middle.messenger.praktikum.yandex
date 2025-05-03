@@ -6,6 +6,11 @@
   "engines": {
     "node": ">=16"
   },
+  "targets": {
+    "default": {
+      "includeNodeModules": true
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,11 +18,13 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "typescript": "^5.5.4",
     "vite": "^6.2.0"
   },
   "dependencies": {
     "express": "^5.1.0",
     "sass": "^1.86.3",
+    "validator": "^13.15.0",
     "vite-plugin-handlebars": "^2.0.0"
   }
 }

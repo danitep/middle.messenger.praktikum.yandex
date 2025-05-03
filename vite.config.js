@@ -7,17 +7,7 @@ import { count, profile, time } from 'console'
 
 export default defineConfig({
   build:{
-    rollupOptions:{
-      input: {
-        main: resolve(__dirname, 'index.html'),
-        err404: resolve(__dirname, 'src/pages/err404.html'),
-        err5xx: resolve(__dirname, 'src/pages/err5xx.html'),
-        login: resolve(__dirname, 'src/pages/login.html'),
-        signin: resolve(__dirname, 'src/pages/signin.html'),
-        profile: resolve(__dirname, 'src/pages/profile.html'),
-        chats: resolve(__dirname, 'src/pages/chats.html'),
-      }
-    },
+    
     outDir: resolve(__dirname,'dist'),
     emptyOutDir: true,
   },
@@ -54,7 +44,7 @@ export default defineConfig({
       err5xxParams:{
         number: 500,
         greeting: "Мы уже фиксим",
-        link: "./chats.html"
+        link: "./chats"
       },
       profileParams:{
         linkpath: "./chats.html",

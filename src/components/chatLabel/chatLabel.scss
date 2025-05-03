@@ -1,12 +1,21 @@
 .chat-label{
-    margin: 0;
+    box-sizing: border-box;
+    margin: 2px 10px;
     padding: 0 10px 0 10px;
-    width: calc(100% - 20px);
+    width: calc(100%);
     display: flex;
     flex-direction: row;
+    border-bottom: 1px solid #eaeaea;
     cursor: pointer;
     &_active{
+        
         background: #e4edfd;
+    }
+    &:first-child{
+        margin-top: 0;
+    }
+    &:last-child{
+        border: no;
     }
     
     &__image-container{
