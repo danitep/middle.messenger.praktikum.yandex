@@ -31,35 +31,79 @@ export class ProfileInfo extends Block{
             events:{
                 'click_button': this.changeForm.bind(this),
                 'submit': this.onFormSubmit.bind(this),
-                'click': (props.events as PropsWithChildren).click
+                'click': (props.events as PropsWithChildren).click,
+                'blur': this.onInputBlur.bind(this),
+                'click_image': (props.events as PropsWithChildren).click_image,
             }
         }
         const propsWithEvents = Object.assign(newProps, additionalProps, events)
-
+        console.log(propsWithEvents)
         this.setProps(propsWithEvents);
+    }
+
+    onInputBlur(e:Event){
+        const input = e.target as HTMLInputElement;
+        if (!input.validity.valid){
+            (e.target as HTMLInputElement).className = "profile__input profile__input_errored"
+        }else{
+            (e.target as HTMLInputElement).className = "profile__input"
+        }
     }
 
     onFormSubmit(e:Event){
         e.preventDefault();
         const form = e.target as HTMLFormElement ;
         const inputs = form.querySelectorAll('input');
-        const submitValue: {[key: string]: string} = {};
-        inputs.forEach((input)=>{
-            submitValue[input.name] = input.value
+        let allValid = true;
+        const validityArray:boolean[]= []
+        inputs.forEach((input:HTMLInputElement)=>{
+            validityArray.push(input.validity.valid);
         })
-        //пока не сделана связь с сервером, то просто затычка
-        console.log(submitValue);
+        validityArray.forEach((validity)=>{
+            if (validity === false){
+                allValid = false;
+            }
+        })
+        if (allValid){
+            const submitValue: {[key: string]: string} = {};
+            if(inputs.length===3){//пароли
+                if (inputs[2].value === inputs[1].value && inputs[1].value !== inputs[0].value){
+                    inputs.forEach((input)=>{
+                        submitValue[input.name] = input.value
+                    })
+                    //пока не сделана связь с сервером, то просто затычка
+                    console.log(submitValue);
+                    if(form.name === "profileForm"){
+                        this._changeProps('isEditDisabled', true);
+                    }else{
+                        this._changeProps('isPasswordEditable', false);
+                    }
+                }else if(inputs[1].value === inputs[0].value){
+                    alert("Новый пароль идентичен предыдущему!")
+                }else if(inputs[2].value !== inputs[1].value){
+                    alert("Новые пароли не совпадают!")
+                }
+            }else{
+                inputs.forEach((input)=>{
+                    submitValue[input.name] = input.value
+                })
 
-        if(form.name === "profileForm"){
-            this._changeProps('isEditDisabled', true);
-        }else{
-            this._changeProps('isPasswordEditable', false);
+                //пока не сделана связь с сервером, то просто затычка
+                console.log(submitValue);
+                if(form.name === "profileForm"){
+                    this._changeProps('isEditDisabled', true);
+                }else{
+                    this._changeProps('isPasswordEditable', false);
+                }
+            }
         }
-
+        else{
+            alert('Испраьте некорректные поля')
+        } 
     }
 
     changeForm(e:Event){//вешается на 2 синие кнопки, которые ссылки (<a>)
-        //функция для смены состяний, для правильной отрисовки страницы
+        //функция для смены состяний формы, для правильной отрисовки страницы
         e.preventDefault();    
         if ((e.target as HTMLAnchorElement).text === "Изменить данные"){
             this._changeProps('isEditDisabled', false);
@@ -70,7 +114,6 @@ export class ProfileInfo extends Block{
 
     _changeProps(propName:string, value:boolean){
         let newProps:PropsWithChildren = this.props as PropsWithChildren;
-        console.log(this.props);
         (newProps.params as PropsWithChildren)[propName] = value;
 
         const profileForm = {profileForm: createProfileForm(newProps.params as PropsWithChildren)};

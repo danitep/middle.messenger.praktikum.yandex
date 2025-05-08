@@ -22,9 +22,10 @@
         height: 100%;
         background-color: rgba($color: #000000, $alpha: 0.4);
         z-index: 2;
+        visibility: hidden;
 
-        &_hidden{
-            visibility: hidden;
+        &_active{
+            visibility: visible;
         }
     }
     &__title{

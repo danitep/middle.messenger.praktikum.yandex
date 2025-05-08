@@ -2,7 +2,6 @@
 import {err404Params, err5xxParams, profileParams, loginParams, signinParams, chatParams} from './utils/pageVariables.js'
 import { Login } from "./pages/login";
 import { Signin } from "./pages/signin";
-import { Props, PropsWithChildren } from './utils/blockInterfaces.js';
 import { Err404 } from './pages/err404.js';
 import { Err5xx } from './pages/err5xx.js';
 import { Profile } from './pages/profile.js';

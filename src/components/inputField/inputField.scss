@@ -30,7 +30,7 @@
         font-size: 13px;
         line-height: 100%;
 
-        &_errored_true{
+        &_errored{
             color: #ff2f2f;
         }
     }
@@ -43,7 +43,7 @@
         color: #ff2f2f;
         display: none;
 
-        &_active_true{
+        &_active{
             display: block;
         }
     }

@@ -16,12 +16,33 @@ const createChildren = (props: PropsWithChildren) => {
         passwordRows.push(new ProfileRow({
             params:rowData, 
             isEditDisabled: false,
+            events:{
+                'blur': (e:Event)=>{
+                    const input = e.target as HTMLInputElement;
+                    if (!input.validity.valid){
+                        (e.target as HTMLInputElement).className = "profile__input profile__input_errored"
+                    }else{
+                        (e.target as HTMLInputElement).className = "profile__input"
+                    }
+                },
+            }
         })) 
     })
     profileRowsData.forEach((rowData:PropsWithChildren):void=>{
         profileRows.push(new ProfileRow({
             params:rowData, 
-            isEditDisabled: props.isEditDisabled
+            isEditDisabled: props.isEditDisabled,
+            events:{
+                'blur': (e:Event)=>{
+                    const input = e.target as HTMLInputElement;
+                    console.log(input.validity);
+                    if (!input.validity.valid){
+                        (e.target as HTMLInputElement).className = "profile__input profile__input_errored"
+                    }else{
+                        (e.target as HTMLInputElement).className = "profile__input"
+                    }
+                },
+            }
         })) 
     })
     buttonsData.forEach((buttonData:PropsWithChildren):void=>{

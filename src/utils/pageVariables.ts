@@ -20,19 +20,16 @@ export const profileParams: PropsWithChildren = {
     isPasswordEditable: false,
     popup: {
       isOpened: false,
-      isImageLoaded: false,
-      isSubmitEmpty: false,
-      isSubmitErrored: false,
-      fileName: "pic.jpg",
     },
     passwordRowsData: [
       {
         name: "oldPassword",
         placeholder: "Старый пароль",
         type: "password",
-        value:"123456789",
-        minLength: 6,
-        maxLength: 200,
+        value:"1234567A",
+        pattern: "^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$",
+        minLength: 8,
+        maxLength: 40,
         isErrored: false,
         isErrorActive: false
       },
@@ -40,9 +37,10 @@ export const profileParams: PropsWithChildren = {
         name: "newPassword",
         placeholder: "Новый пароль",
         type: "password",
-        value:"12345678910",
-        minLength: 6,
-        maxLength: 200,
+        value:"12345678A",
+        pattern: "^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$",
+        minLength: 8,
+        maxLength: 40,
         isErrored: false,
         isErrorActive: false
       },
@@ -50,9 +48,10 @@ export const profileParams: PropsWithChildren = {
         name: "newPasswordAgain",
         placeholder: "Повторите новый пароль",
         type: "password",
-        value:"12345678910",
-        minLength: 6,
-        maxLength: 200,
+        value:"12345678A",
+        pattern: "^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$",
+        minLength: 8,
+        maxLength: 40,
         isErrored: false,
         isErrorActive: false
       },
@@ -63,7 +62,8 @@ export const profileParams: PropsWithChildren = {
         placeholder: "Почта",
         type: "email",
         value:"pochta@yandex.ru",
-        minLength: 6,
+        pattern: "\^\\S+@\\S+[\\.]\\S+\$",
+        minLength: 5,
         maxLength: 200,
         isErrored: false,
         isErrorActive: false
@@ -73,8 +73,9 @@ export const profileParams: PropsWithChildren = {
         placeholder: "Логин",
         type: "text",
         value:"ivanivanov",
-        minLength: 1,
-        maxLength: 200,
+        pattern: "[a-zA-Z0-9-_]*[a-zA-Z]",
+        minLength: 3,
+        maxLength: 20,
         isErrored: false,
         isErrorActive: false
       },
@@ -83,8 +84,9 @@ export const profileParams: PropsWithChildren = {
         placeholder: "Имя",
         type: "text",
         value:"Иван",
+        pattern: "^[A-Z][a-z]+$|^[А-Я][а-я]+$",
         minLength: 1,
-        maxLength: 200,
+        maxLength: 30,
         isErrored: false,
         isErrorActive: false
       },
@@ -93,8 +95,9 @@ export const profileParams: PropsWithChildren = {
         placeholder: "Фамилия",
         type: "text",
         value:"Иванов",
+        pattern: "^[A-Z][a-z-]+$|^[А-Я][а-я-]+$",
         minLength: 1,
-        maxLength: 200,
+        maxLength: 30,
         isErrored: false,
         isErrorActive: false
       },
@@ -112,9 +115,10 @@ export const profileParams: PropsWithChildren = {
         name: "phone",
         placeholder: "Телефон",
         type: "text",
-        value: '+7(909)9673030',
-        minLength: 1,
-        maxLength: 200,
+        value: '+79099673030',
+        pattern: "\\+?\\d{10,15}",
+        minLength: 10,
+        maxLength: 15,
         isErrored: false,
         isErrorActive: false
       },
@@ -148,8 +152,9 @@ export const loginParams: PropsWithChildren  = {
         placeholder: "Логин",
         type: "text",
         errortext: "Неверный логин",
-        minLength: 1,
-        maxLength: 200,
+        pattern: "[a-zA-Z0-9-_]*[a-zA-Z]",
+        minLength: 3,
+        maxLength: 20,
         isErrored: false,
         isErrorActive: false
       },
@@ -158,9 +163,10 @@ export const loginParams: PropsWithChildren  = {
         isNameActive: true,
         placeholder: "Пароль",
         type: "password",
-        errortext: "",
-        minLength: 0,
-        maxLength: 15,
+        pattern: "^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$",
+        errortext: "Некорректный пароль",
+        minLength: 8,
+        maxLength: 40,
         isErrored: false,
         isErrorActive: false
       }
@@ -179,8 +185,9 @@ export const signinParams: PropsWithChildren = {
         isNameActive: true,
         placeholder: "Почта",
         type: "email",
-        errortext: "",
-        minLength: 6,
+        pattern: "\^\\S+@\\S+[\\.]\\S+\$",
+        errortext: "Некорректная почта",
+        minLength: 5,
         maxLength: 200,
         isErrored: false,
         isErrorActive: false
@@ -190,9 +197,10 @@ export const signinParams: PropsWithChildren = {
         isNameActive: true,
         placeholder: "Логин",
         type: "text",
-        errortext: "",
-        minLength: 1,
-        maxLength: 200,
+        pattern: "[a-zA-Z0-9-_]*[a-zA-Z]",
+        errortext: "Некорректный логин",
+        minLength: 3,
+        maxLength: 20,
         isErrored: false,
         isErrorActive: false
       },
@@ -201,9 +209,10 @@ export const signinParams: PropsWithChildren = {
         isNameActive: true,
         placeholder: "Имя",
         type: "text",
+        pattern: "^[A-Z][a-z-]+$|^[А-Я][а-я-]+$",
         minLength: 1,
-        maxLength: 200,
-        errortext: "",
+        maxLength: 30,
+        errortext: "Некорректная запись",
         isErrored: false,
         isErrorActive: false
       },
@@ -212,9 +221,10 @@ export const signinParams: PropsWithChildren = {
         isNameActive: true,
         placeholder: "Фамилия",
         type: "text",
+        pattern: "^[A-Z][a-z-]+$|^[А-Я][а-я-]+$",
         minLength: 1,
-        maxLength: 200,
-        errortext: "",
+        maxLength: 30,
+        errortext: "Некорректная запись",
         isErrored: false,
         isErrorActive: false
       },
@@ -223,9 +233,10 @@ export const signinParams: PropsWithChildren = {
         isNameActive: true,
         placeholder: "Телефон",
         type: "text",
-        minLength: 0,
+        pattern: "\\+?\\d{10,15}",
+        minLength: 10,
         maxLength: 15,
-        errortext: "",
+        errortext: "Некорректная запись",
         isErrored: false,
         isErrorActive: false
       },
@@ -234,9 +245,10 @@ export const signinParams: PropsWithChildren = {
         isNameActive: true,
         placeholder: "Пароль",
         type: "password",
-        errortext: "",
+        pattern: "^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$",
+        errortext: "Некорректный пароль",
         minLength: 8,
-        maxLength: 200,
+        maxLength: 40,
         isErrored: true,
         isErrorActive: false
       },
@@ -245,9 +257,10 @@ export const signinParams: PropsWithChildren = {
         isNameActive: true,
         placeholder: "Пароль (ещё раз)",
         type: "password",
-        errortext: "Пароли не совпадают",
+        pattern: "^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$",
+        errortext: "Некорректный пароль",
         minLength: 8,
-        maxLength: 200,
+        maxLength: 40,
         isErrored: true,
         isErrorActive: true
       }
@@ -255,7 +268,7 @@ export const signinParams: PropsWithChildren = {
 };
 
 export const chatParams: PropsWithChildren = {
-    isChatChosen: true,
+    isChatChosen: false,
     profileLink: "./profile",
     popups: [
       {
@@ -266,10 +279,14 @@ export const chatParams: PropsWithChildren = {
           {
             imageLink: "../../src/static/add_user.svg",
             buttonText: "Добавить пользователя",
+            popoverTarget: "popup_settings",
+            id: "add_user"
           },
           {
             imageLink: "../../src/static/remove_user.svg",
             buttonText: "Удалить пользователя",
+            popoverTarget: "popup_settings",
+            id: "remove_user"
           }
         ],
       },
@@ -281,82 +298,93 @@ export const chatParams: PropsWithChildren = {
           {
             imageLink: "../../src/static/add_media.svg",
             buttonText: "Фото или Видео",
+            popoverTarget: "popup_add_data",
+            id: "add_media"
           },
           {
             imageLink: "../../src/static/add_file.svg",
             buttonText: "Файл",
+            popoverTarget: "popup_add_data",
+            id: "add_file"
           },
           {
             imageLink: "../../src/static/add_location.svg",
             buttonText: "Локация",
+            popoverTarget: "popup_add_data",
+            id: "add_geo"
           }
         ],
       },
     ],
-    addRemovePopup:{
-      isOpened: false,
-      isAdd: true,
-      username: "ivanivanov",
-      addPopup:{
+    addRemovePopups:[
+      {
+        id: "popup_add",
         title: "Добавить пользователя",
-        buttonText: "Добавить"
+        username: "ivanivanov",
+        buttonText: "Добавить",
       },
-      removePopup: {
+      {
+        id: "popup_remove",
         title: "Удалить пользователя",
+        username: "ivanivanov",
         buttonText: "Удалить"
       }
-    },
-    openedChat:{
-      imagePath: "",
-      name: "Вадим",
-      isSettingsActive: false,
-      isAddActive: false,
-      packs:[
-        {
-          date: "19 июня",
-          messages: [
-            {
-              isSideChanged: false,
-              isMessageMine:false,
-              isRead: false,
-              isText: true,
-              isImage: false,
-              time: "11:56",
-              content:{
-                text: "Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. \n \n Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.",
-                imageLink: ""
+    ],
+    chats:[
+      {
+        id:4,
+        imagePath: "",
+        name: "Вадим",
+        isSettingsActive: false,
+        isAddActive: false,
+        packs:[
+          {
+            date: "19 июня",
+            messages: [
+              {
+                isSideChanged: false,
+                isMessageMine:false,
+                isRead: false,
+                isText: true,
+                isImage: false,
+                time: "11:56",
+                content:{
+                  text: "Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. \n \n Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.",
+                  imageLink: ""
+                }
+              },
+              {
+                isSideChanged: false,
+                isMessageMine:false,
+                isRead: false,
+                isText: false,
+                isImage: true,
+                time: "11:56",
+                content:{
+                  text: "",
+                  imageLink: "../../src/static/Снимок экрана 2020-06-21 в 19.18 1.png"
+                }
+              },
+              {
+                isSideChanged: true,
+                isMessageMine:true,
+                isRead: true,
+                isText: true,
+                isImage: false,
+                time: "12:00",
+                content:{
+                  text: "Круто!",
+                  imageLink: ""
+                }
               }
-            },
-            {
-              isSideChanged: false,
-              isMessageMine:false,
-              isRead: false,
-              isText: false,
-              isImage: true,
-              time: "11:56",
-              content:{
-                text: "",
-                imageLink: "../../src/static/Снимок экрана 2020-06-21 в 19.18 1.png"
-              }
-            },
-            {
-              isSideChanged: true,
-              isMessageMine:true,
-              isRead: true,
-              isText: true,
-              isImage: false,
-              time: "12:00",
-              content:{
-                text: "Круто!",
-                imageLink: ""
-              }
-            }
-          ]
-        }
-      ]
-    },
+            ]
+          }
+        ]
+      },
+    ],
     chatList:[
       {
+        id: 1,
         imagePath: "",
         name: "Андрей",
         lastMessage: "Изображение",
@@ -365,9 +393,9 @@ export const chatParams: PropsWithChildren = {
         hasNewMessages: true,
         isTooManyMessages: false,
         newMessagesCount: 2,
-        isActive: false,
       },
       {
+        id: 2,
         imagePath: "",
         name: "Киноклуб",
         lastMessage: "стикер",
@@ -376,9 +404,9 @@ export const chatParams: PropsWithChildren = {
         hasNewMessages: false,
         isTooManyMessages: false,
         newMessagesCount: 0,
-        isActive: false,
       },
       {
+        id: 3,
         imagePath: "",
         name: "Илья",
         lastMessage: "Друзья, у меня для вас особенный выпуск новостей! Итак...",
@@ -387,9 +415,9 @@ export const chatParams: PropsWithChildren = {
         hasNewMessages: true,
         isTooManyMessages: false,
         newMessagesCount: 4,
-        isActive: false,
       },
       {
+        id: 4,
         imagePath: "",
         name: "Вадим",
         lastMessage: "Круто!",
@@ -398,9 +426,9 @@ export const chatParams: PropsWithChildren = {
         hasNewMessages: false,
         isTooManyMessages: false,
         newMessagesCount: 0,
-        isActive: true,
       },
       {
+        id: 5,
         imagePath: "",
         name: "тет-а-теты",
         lastMessage: "И Human Interface Guidelines и Material Design рекомендуют...",
@@ -409,9 +437,9 @@ export const chatParams: PropsWithChildren = {
         hasNewMessages: false,
         isTooManyMessages: false,
         newMessagesCount: 0,
-        isActive: false,
       },
       {
+        id: 6,
         imagePath: "",
         name: "1, 2, 3",
         lastMessage: "Миллионы россиян ежедневно проводят десятки часов свое...",
@@ -420,9 +448,9 @@ export const chatParams: PropsWithChildren = {
         hasNewMessages: false,
         isTooManyMessages: false,
         newMessagesCount: 0,
-        isActive: false,
       },
       {
+        id: 7,
         imagePath: "",
         name: "Design Destroyer",
         lastMessage: "В 2008 году художник Jon Rafman  начал собирать...",
@@ -431,9 +459,9 @@ export const chatParams: PropsWithChildren = {
         hasNewMessages: false,
         isTooManyMessages: false,
         newMessagesCount: 0,
-        isActive: false,
       },
       {
+        id: 8,
         imagePath: "",
         name: "Day.",
         lastMessage: "Так увлёкся работой по курсу, что совсем забыл его анонсир...",
@@ -442,9 +470,9 @@ export const chatParams: PropsWithChildren = {
         hasNewMessages: false,
         isTooManyMessages: false,
         newMessagesCount: 0,
-        isActive: false,
       },
       {
+        id: 9,
         imagePath: "",
         name: "Стас Рогозин",
         lastMessage: "Можно или сегодня или завтра вечером.",
@@ -453,7 +481,7 @@ export const chatParams: PropsWithChildren = {
         hasNewMessages: false,
         isTooManyMessages: false,
         newMessagesCount: 0,
-        isActive: false,
       }
     ]
 };
+

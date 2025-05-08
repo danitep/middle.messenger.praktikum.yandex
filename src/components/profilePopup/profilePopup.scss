@@ -96,6 +96,16 @@
         line-height: 100%;
         text-align: center;
         color: #fff;
+        opacity: 1;
+        transition: 
+            opacity  0.3s linear;
+        &:hover{
+            opacity: 0.8;
+        }
+
+        &:disabled{
+            background: #676767;
+        }
     }
     &__error{
         margin: 15px auto 14px auto;

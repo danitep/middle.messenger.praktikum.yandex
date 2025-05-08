@@ -52,6 +52,12 @@
         line-height: 100%;
         text-align: center;
         color: #fff;
+        opacity: 1;
+        transition: 
+            opacity  0.3s linear;
+        &:hover{
+            opacity: 0.8;
+        }
     }
     &__link{
         margin: 14px auto 30px auto;

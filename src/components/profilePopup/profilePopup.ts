@@ -21,10 +21,27 @@ export class ProfilePopup extends Block{
     }
 
     validateForm(e:Event){
-        console.log(e.target)
-        const fileNameP = (e.target as HTMLInputElement).parentElement?.querySelector('popup__input-text')
-        console.log((e.target as HTMLInputElement).parentElement)
-        this._changeProps('isImageLoaded',true); 
+        const title = this._element?.querySelector('.popup__title')
+        let fileNameP = (e.target as HTMLInputElement).parentElement?.querySelector('.popup__input-text')
+        fileNameP = fileNameP? fileNameP: (e.target as HTMLInputElement).parentElement?.querySelector('.popup__image-name')
+        const input = (e.target as HTMLInputElement).parentElement?.querySelector('input')
+        const submitButton = this._element?.getElementsByClassName('popup__submit-button')
+        const errortext = this._element?.querySelector('.popup__error')
+        if(fileNameP  && input && title && submitButton && errortext){
+            if(input.files){
+                if ((/\.(gif|jpe?g|tiff?|png|webp|bmp|svg)$/i).test(input.files[0].name)){
+                    fileNameP.textContent = input.files[0].name;
+                    fileNameP.className = 'popup__image-name'
+                    title.textContent = "Файл загружен"
+                    title.className = "popup__title"
+                    errortext.className = "popup__error popup__error_hidden"
+                }
+                else{
+                    title.textContent = "Ошибка, попробуйте ещё раз"
+                    title.className += " popup__title_errored"
+                }
+            }
+        }
     }
 
     onLayoutClick(e:Event){
@@ -37,15 +54,23 @@ export class ProfilePopup extends Block{
     onSubmit(e:Event){
         e.preventDefault();
         const form = e.target as HTMLFormElement;
-        console.log(e.target)
-        const inputs = form.querySelectorAll('input');
-        const submitValue: {[key: string]: string} = {};
-        inputs.forEach((input)=>{
-            submitValue[input.name] = input.value
-        })
+        const input = form.querySelector('input');
+        const errortext = this._element?.querySelector('.popup__error')
+        const submitValue: {[key: string]: File } = {};
+        
+        console.log(input?.files)
+        if(input?.files && errortext){
+            if (input.files.length>0){
+                submitValue[`${input.name}`] = input.files[0];
+                console.log(submitValue);
+                this._changeProps('isOpened',false); 
+            }else if(input.files.length===0){//если пусто - ошибка
+                errortext.className = 'popup__error';
+                console.log(errortext)
+            }
+        }
         //пока не сделана связь с сервером, то просто затычка
-        console.log(submitValue);
-        this._changeProps('isOpened',false); 
+        
     }
 
     _changeProps(propName:string, value:boolean){
@@ -63,23 +88,15 @@ export class ProfilePopup extends Block{
         return`
         <div class="popup__layout {{#if params.isOpened}} {{else}}popup__layout_hidden{{/if}}">
             <form class="popup">
-                {{#if params.isSubmitErrored}}
-                    <p class="popup__title popup__title_errored">Ошибка, попробуйте ещё раз</p>
-                {{else}}
-                    {{#if params.isImageLoaded}}
-                        <p class="popup__title">Файл загружен</p>
-                    {{else}}
-                        <p class="popup__title">Загрузите файл</p>
-                    {{/if}}
-                {{/if}}
+                <p class="popup__title">Загрузите файл</p>
 
                 <div class="popup__file-button">
-                    <input type="file" accept=".jpg, .jpeg, .png" name="avatar" class="popup__file-input">
-                    <p class="{{#if params.isImageLoaded}}popup__image-name{{else}}popup__input-text{{/if}}">{{#if params.isImageLoaded}}{{params.fileName}}{{else}}Выбрать файл на компьютере{{/if}}</p>
+                    <input type="file" accept=".jpg, .jpeg, .png, .bmp, .svg" name="avatar" class="popup__file-input">
+                    <p class="popup__input-text">Выбрать файл на компьютере</p>
                 </div>
 
                 <button class="popup__submit-button" type="submit">Поменять</button>
-                <p class="popup__error {{#if params.isSubmitEmpty}} {{else}}popup__error_hidden{{/if}}">Нужно выбрать файл</p>
+                <p class="popup__error popup__error_hidden">Нужно выбрать файл</p>
             </form>
         </div>
         `

@@ -24,6 +24,10 @@
         line-height: 100%;
         text-align: right;
         color: #999;
+
+        &_errored{
+            border: red 1px solid;
+        }
     }
     &__row-name{
         margin: 0;

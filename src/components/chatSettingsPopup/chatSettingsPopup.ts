@@ -24,8 +24,11 @@ export class ChatSettingsPopup extends Block{
         additional-popup 
         {{#if isActive}}additional-popup_active{{/if}}
         {{#if isSettings}}additional-popup_settings{{/if}}
-        {{#if isAdd}}additional-popup_add{{/if}}
-        ">
+        {{#if isAdd}}additional-popup_add{{/if}}"
+
+        popover
+
+        id="{{#if isSettings}}popup_settings{{/if}}{{#if isAdd}}popup_add_data{{/if}}">
             {{{chatSettingsRows}}}
         </div>
         `

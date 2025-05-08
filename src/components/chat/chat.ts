@@ -1,16 +1,34 @@
 import Block from "../../framework/Block";
 import { PropsWithChildren } from "../../utils/blockInterfaces";
 import { ChatHeader } from "../chatHeader/chatHeader";
+import { ChatMenu } from "../chatMenu/chatMenu";
 import { ChatWindow } from "../chatWindow/chatWindow";
+
+
+/*
+Напоминалка на потом, чтобы поменять загрузку чата и возможную отправку сообщений
+Можно переработать сборку чата и сделать всё по красоте, а не просто вот один рендер
+Типа загрузка сообщений, может даже добавка сообщений и т.д.
+*/
+
 
 export class Chat extends Block{
     constructor (props:PropsWithChildren){
+        delete props.events
+        console.log(props)
+        if(props.isChatChosen){
+            
+            super({
+                ...props,
+                chatHeader: new ChatHeader({params:props.openedChat}),
+                chatWindow: new ChatWindow({packs: (props.openedChat as PropsWithChildren).packs as PropsWithChildren}),
+                chatMenu: new ChatMenu({})
+              });
+        }
         super({
-          ...props,
-          chatHeader: new ChatHeader({params:props.openedChat}),
-          chatWindow: new ChatWindow({packs: (props.openedChat as PropsWithChildren).packs as PropsWithChildren})
-
-        });
+            ...props,
+          });
+        
     }
 
     override render(): string {
@@ -19,20 +37,7 @@ export class Chat extends Block{
             {{#if isChatChosen}}
                 {{{chatHeader}}}
                 {{{chatWindow}}}
-                <div class="chat__menu">
-                    <button class="chat__button {{#if openedChat.isAddActive}} chat__button_active{{/if}}"></button>
-                    <form class="chat__form">
-                        <input type="text" 
-                            class="chat__input" 
-                            id="message" 
-                            name="message" 
-                            onChange={}
-                            placeholder="Сообщение"
-                            required         
-                            minLength=1/>
-                        <button class="chat__submit" type="submit"></button>
-                    </form>
-                </div>
+                {{{chatMenu}}}
             {{else}}
                 <p>Выберите чат чтобы отправить сообщение</p>
             {{/if}}
@@ -40,3 +45,4 @@ export class Chat extends Block{
         `
     }
 }
+

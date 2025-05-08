@@ -11,7 +11,7 @@ export class Chatlabel extends Block{
     override render(): string {
         return`
         <>
-        <div class="chat-label {{#if params.isActive}}chat-label_active{{/if}}">
+        <li class="chat-label__container" id="{{params.id}}">
             <div class="chat-label__image-container">
                 <img class="chat-label__image" src="{{params.imagePath}}">
             </div>
@@ -39,7 +39,7 @@ export class Chatlabel extends Block{
                 {{/if}}
             </div>
             
-        </div>
+        </li>
         <div class="chat-list__border"></div>
         </>
         `

@@ -38,14 +38,12 @@ export default class Block {
 
   _addEvents(){
     const {events = {}} = this.props;
+    
     Object.keys(events).forEach((eventName:string)=>{
       if(this._element){
         const links:NodeListOf<HTMLAnchorElement> = this._element.querySelectorAll('a');
         const forms:NodeListOf<HTMLFormElement>  = this._element.querySelectorAll('form');
 
-        //click_image 
-        //добавить на открытие попапа, там вроде button
-        //лучше искать button внутри if click_image
         if(eventName === "click" && links.length>0){
           links.forEach((link)=>{
             if (link.href !== "" && link.href !== link.baseURI){
@@ -53,47 +51,75 @@ export default class Block {
             }
           })
         }
-
-        if(eventName === "click_button" && links.length>0){
+        else if(eventName === "click_button" && links.length>0){
           links.forEach((link)=>{
             if (link.pathname === "" || link.pathname === "/"){
               link.addEventListener('click', events[eventName])
             }
           })
         }
-
-        if(eventName === "submit" && forms.length>0){
+        else if(eventName === "submit" && forms.length>0){
           forms.forEach((form)=>{
             form.addEventListener(eventName, events[eventName])
           })
         }
-        
-        if(eventName === "click_image"){
+        else if(eventName === "click_image"){
           const button = this._element.querySelector('button[type="button"]')
           if(button){
             button.addEventListener('click', events[eventName])
           }
         }
-        
-        if(eventName === "popup_close"){
+        else if(eventName === "popup_close"){
           this._element.addEventListener('click', events[eventName])
         }
-
-        if(eventName === "popup_submit"){
+        else if(eventName === "popup_submit"){
           forms.forEach((form)=>{
             form.addEventListener("submit", events[eventName])
           })
         }
-        
-        if(eventName === "change"){
+        else if(eventName === "change"){
           const inputs = this._element.querySelectorAll('input');
           inputs.forEach((input)=>{
             input.addEventListener(eventName, events[eventName])
           })
-        }else{//затычка, если что-то забыл обработать (удалить в конце)
+        }
+        else if(eventName === "blur"){
+          const inputs = this._element.querySelectorAll('input');
+          inputs.forEach((input)=>{
+            input.addEventListener(eventName, events[eventName])
+          })
+        }
+        else if(eventName === "search"){
+          const inputs = this._element.querySelectorAll('#search');
+          inputs.forEach((input)=>{
+            input.addEventListener('keyup', events[eventName])
+          })
+        }
+        else if(eventName === "select_chat"){
+          this._element.querySelector('.chat-list__list')?.addEventListener('click', events[eventName])
+        }
+        else if(eventName === "chat_button_click"){
+          const buttons = this._element.querySelectorAll('button[type="button"]');
+          buttons.forEach((button)=>{
+            button.addEventListener('focus', events[eventName]);
+          });
+        }
+        else if(eventName === "button_blur"){
+          const buttons = this._element.querySelectorAll('button[type="button"]');
+          buttons.forEach((button)=>{
+            button.addEventListener('blur', events[eventName]);
+          });
+        }
+        else if(eventName === "add-remove_click"){
+          const buttons = this._element.querySelectorAll('.additional-popup > .additional-popup__button')
+          buttons.forEach((button)=>{
+            button.addEventListener('click', events[eventName])
+          })
+        }
+        else{//затычка, если что-то забыл обработать (удалить в конце)
           const message: {[key: string]: () => {}} = {}
           message[eventName] =events[eventName]
-          //console.log(message)
+          console.log(message)
         }
       }
     })
@@ -247,7 +273,7 @@ export default class Block {
     const self = this;
     return new Proxy(props, {
       get(target:Props, prop:string) {
-        const value:string|string[]|boolean|number|Props|Props[]|PropsWithChildren|PropsWithChildren[]|Block|Block[]|Function|undefined = target[prop];
+        const value:string|string[]|boolean|number|Props|Props[]|PropsWithChildren|PropsWithChildren[]|Block|Block[]|Function|RegExp|undefined = target[prop];
         //Здесь не нашёл способа воткнуть одну формулировку, вместо вставки всего того что входит в Props,
         //Если короче, не вышло сделать PropsWithoutEvents
         return typeof value === "function" ? value.bind(target) : value;
@@ -271,16 +297,8 @@ export default class Block {
     }
     return document.createElement(tagName)
   }
-  
-  show() {
-    const element = this.getContent();
-    if(element)
-      element.style.display = "block";
-  }
-  
-  hide() {
-    const element = this.getContent();
-    if(element)
-      element.style.display = "none";
-  }
-  }
+
+}
+
+
+

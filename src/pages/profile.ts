@@ -4,60 +4,25 @@ import { Slider } from "../components/slider/slider";
 import { ProfilePopup } from "../components/profilePopup/profilePopup";
 import { ProfileInfo } from "../components/profileInfo/profileInfo";
 
-const createChildren = (props: PropsWithChildren) => {
-    const propsForInfo:PropsWithChildren = Object.keys(props).filter((key:string) =>
-        key !== 'popup').reduce((obj: PropsWithChildren, key:string) =>
-        {
-            obj[key] = props[key];
-            return obj;
-        }, {}
-    );
 
-    const slider = new Slider({
-        linkpath: props.linkpath,
-    })
-
-    const profilePopup = new ProfilePopup({
-        params: props.popup
-    })
-
-    const profileInfo = new ProfileInfo({
-        params: propsForInfo,
-        events:{
-            'click': (props.events as PropsWithChildren).click
-        }
-    })
-
-
-    return [slider, profilePopup, profileInfo];
-}
 
 
 export class Profile extends Block{
     constructor (props:PropsWithChildren){
         
 
-        const [slider, profilePopup, profileInfo] = createChildren(props)
         super({
             ...props,
-            slider: slider,
-            profilePopup: profilePopup,
-            profileInfo: profileInfo
 
         });
-
+        const [slider, profilePopup, profileInfo] = this.createChildren(props)
         const newProps = props
         const additionalProps = {
             slider: slider,
             profilePopup: profilePopup,
-            profileInfo: profileInfo
+            profileInfo: profileInfo,
         }
-        const events = {
-            events:{
-                'click_image': this.openPopup.bind(this),
-            }
-        }
-        const propsWithEvents = Object.assign(newProps, additionalProps, events)
+        const propsWithEvents = Object.assign(newProps, additionalProps)
         this.setProps(propsWithEvents);
     }
 
@@ -66,7 +31,7 @@ export class Profile extends Block{
         let newProps:PropsWithChildren = this.props as PropsWithChildren;
         (newProps.popup as PropsWithChildren).isOpened = true;
 
-        const [slider, profilePopup, profileInfo] = createChildren(newProps);
+        const [slider, profilePopup, profileInfo] = this.createChildren(newProps,);
         const additionalProps = {
             slider: slider,
             profilePopup: profilePopup,
@@ -78,6 +43,35 @@ export class Profile extends Block{
         newProps = Object.assign(newProps, additionalProps, events);
         this.setProps(newProps);
         this.render();
+    }
+
+    createChildren = (props: PropsWithChildren) => {
+        const propsForInfo:PropsWithChildren = Object.keys(props).filter((key:string) =>
+            key !== 'popup').reduce((obj: PropsWithChildren, key:string) =>
+            {
+                obj[key] = props[key];
+                return obj;
+            }, {}
+        );
+    
+        const slider = new Slider({
+            linkpath: props.linkpath,
+        })
+    
+        const profilePopup = new ProfilePopup({
+            params: props.popup
+        })
+    
+        const profileInfo = new ProfileInfo({
+            params: propsForInfo,
+            events:{
+                'click': (props.events as PropsWithChildren).click,
+                'click_image': this.openPopup.bind(this),
+            }
+        })
+    
+    
+        return [slider, profilePopup, profileInfo];
     }
 
     override render(): string {
