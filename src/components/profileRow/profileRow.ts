@@ -1,15 +1,15 @@
-import Block from "../../framework/Block";
-import { PropsWithChildren } from "../../utils/blockInterfaces";
+import Block from '../../framework/Block';
+import { PropsWithChildren } from '../../utils/blockInterfaces';
 
-export class ProfileRow extends Block{
-    constructor (props:PropsWithChildren){
-        super({
-            ...props,
-        });
-    }
+export default class ProfileRow extends Block {
+  constructor(props:PropsWithChildren) {
+    super({
+      ...props,
+    });
+  }
 
-    override render(): string {
-        return`
+  override render(): string {
+    return `
         <div class="profile__text-container">
             <label class="profile__row-name">{{params.placeholder}}</label>
             <input type="{{params.type}}" 
@@ -33,6 +33,6 @@ export class ProfileRow extends Block{
                 minLength={{params.minLength}} 
                 maxLength="{{params.maxLength}}"/>
         </div>
-        `
-    }
+        `;
+  }
 }

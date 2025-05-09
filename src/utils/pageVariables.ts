@@ -1,487 +1,487 @@
 import { PropsWithChildren } from './blockInterfaces';
 
 export const err404Params: PropsWithChildren = {
-    number: 404,
-    greeting: "Не туда попали",
-    link: "./chats"
+  number: 404,
+  greeting: 'Не туда попали',
+  link: './chats',
 };
 
 export const err5xxParams: PropsWithChildren = {
-    number: 500,
-    greeting: "Мы уже фиксим",
-    link: "./chats"
+  number: 500,
+  greeting: 'Мы уже фиксим',
+  link: './chats',
 };
 
 export const profileParams: PropsWithChildren = {
-    linkpath: "./chats",
-    avatarTempPath: "../../src/static/avatar.svg",
-    username: "Иван",
-    isEditDisabled: true,
-    isPasswordEditable: false,
-    popup: {
-      isOpened: false,
+  linkpath: './chats',
+  avatarTempPath: '../../src/static/avatar.svg',
+  username: 'Иван',
+  isEditDisabled: true,
+  isPasswordEditable: false,
+  popup: {
+    isOpened: false,
+  },
+  passwordRowsData: [
+    {
+      name: 'oldPassword',
+      placeholder: 'Старый пароль',
+      type: 'password',
+      value: '1234567A',
+      pattern: '^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$',
+      minLength: 8,
+      maxLength: 40,
+      isErrored: false,
+      isErrorActive: false,
     },
-    passwordRowsData: [
-      {
-        name: "oldPassword",
-        placeholder: "Старый пароль",
-        type: "password",
-        value:"1234567A",
-        pattern: "^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$",
-        minLength: 8,
-        maxLength: 40,
-        isErrored: false,
-        isErrorActive: false
-      },
-      {
-        name: "newPassword",
-        placeholder: "Новый пароль",
-        type: "password",
-        value:"12345678A",
-        pattern: "^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$",
-        minLength: 8,
-        maxLength: 40,
-        isErrored: false,
-        isErrorActive: false
-      },
-      {
-        name: "newPasswordAgain",
-        placeholder: "Повторите новый пароль",
-        type: "password",
-        value:"12345678A",
-        pattern: "^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$",
-        minLength: 8,
-        maxLength: 40,
-        isErrored: false,
-        isErrorActive: false
-      },
-    ],
-    profileRowsData: [
-      {
-        name: "email",
-        placeholder: "Почта",
-        type: "email",
-        value:"pochta@yandex.ru",
-        pattern: "\^\\S+@\\S+[\\.]\\S+\$",
-        minLength: 5,
-        maxLength: 200,
-        isErrored: false,
-        isErrorActive: false
-      },
-      {
-        name: "login",
-        placeholder: "Логин",
-        type: "text",
-        value:"ivanivanov",
-        pattern: "[a-zA-Z0-9-_]*[a-zA-Z]",
-        minLength: 3,
-        maxLength: 20,
-        isErrored: false,
-        isErrorActive: false
-      },
-      {
-        name: "first_name",
-        placeholder: "Имя",
-        type: "text",
-        value:"Иван",
-        pattern: "^[A-Z][a-z]+$|^[А-Я][а-я]+$",
-        minLength: 1,
-        maxLength: 30,
-        isErrored: false,
-        isErrorActive: false
-      },
-      {
-        name: "second_name",
-        placeholder: "Фамилия",
-        type: "text",
-        value:"Иванов",
-        pattern: "^[A-Z][a-z-]+$|^[А-Я][а-я-]+$",
-        minLength: 1,
-        maxLength: 30,
-        isErrored: false,
-        isErrorActive: false
-      },
-      {
-        name: "display_name",
-        placeholder: "Имя в чате",
-        type: "text",
-        value:"Иван",
-        minLength: 1,
-        maxLength: 200,
-        isErrored: false,
-        isErrorActive: false
-      },
-      {
-        name: "phone",
-        placeholder: "Телефон",
-        type: "text",
-        value: '+79099673030',
-        pattern: "\\+?\\d{10,15}",
-        minLength: 10,
-        maxLength: 15,
-        isErrored: false,
-        isErrorActive: false
-      },
-    ],
-    buttonsData:[
-      {
-        text: "Изменить данные",
-        link: "",
-      },
-      {
-        text: "Изменить пароль",
-        link: "",
-      },
-      {
-        text: "Выйти",
-        link: "/main",
-      },
-    ]
+    {
+      name: 'newPassword',
+      placeholder: 'Новый пароль',
+      type: 'password',
+      value: '12345678A',
+      pattern: '^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$',
+      minLength: 8,
+      maxLength: 40,
+      isErrored: false,
+      isErrorActive: false,
+    },
+    {
+      name: 'newPasswordAgain',
+      placeholder: 'Повторите новый пароль',
+      type: 'password',
+      value: '12345678A',
+      pattern: '^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$',
+      minLength: 8,
+      maxLength: 40,
+      isErrored: false,
+      isErrorActive: false,
+    },
+  ],
+  profileRowsData: [
+    {
+      name: 'email',
+      placeholder: 'Почта',
+      type: 'email',
+      value: 'pochta@yandex.ru',
+      pattern: '^\\S+@\\S+[\\.]\\S+$',
+      minLength: 5,
+      maxLength: 200,
+      isErrored: false,
+      isErrorActive: false,
+    },
+    {
+      name: 'login',
+      placeholder: 'Логин',
+      type: 'text',
+      value: 'ivanivanov',
+      pattern: '[a-zA-Z0-9-_]*[a-zA-Z]',
+      minLength: 3,
+      maxLength: 20,
+      isErrored: false,
+      isErrorActive: false,
+    },
+    {
+      name: 'first_name',
+      placeholder: 'Имя',
+      type: 'text',
+      value: 'Иван',
+      pattern: '^[A-Z][a-z]+$|^[А-Я][а-я]+$',
+      minLength: 1,
+      maxLength: 30,
+      isErrored: false,
+      isErrorActive: false,
+    },
+    {
+      name: 'second_name',
+      placeholder: 'Фамилия',
+      type: 'text',
+      value: 'Иванов',
+      pattern: '^[A-Z][a-z-]+$|^[А-Я][а-я-]+$',
+      minLength: 1,
+      maxLength: 30,
+      isErrored: false,
+      isErrorActive: false,
+    },
+    {
+      name: 'display_name',
+      placeholder: 'Имя в чате',
+      type: 'text',
+      value: 'Иван',
+      minLength: 1,
+      maxLength: 200,
+      isErrored: false,
+      isErrorActive: false,
+    },
+    {
+      name: 'phone',
+      placeholder: 'Телефон',
+      type: 'text',
+      value: '+79099673030',
+      pattern: '\\+?\\d{10,15}',
+      minLength: 10,
+      maxLength: 15,
+      isErrored: false,
+      isErrorActive: false,
+    },
+  ],
+  buttonsData: [
+    {
+      text: 'Изменить данные',
+      link: '',
+    },
+    {
+      text: 'Изменить пароль',
+      link: '',
+    },
+    {
+      text: 'Выйти',
+      link: '/main',
+    },
+  ],
 };
 
-export const loginParams: PropsWithChildren  = {
-    title: "Вход", 
-    name: "login", 
-    buttontext: "Авторизоваться", 
-    linktext: "Нет аккаунта?",
-    linkpath: "./signin",
-    inputs: [
-      {
-        name: "login",
-        isNameActive: true,
-        placeholder: "Логин",
-        type: "text",
-        errortext: "Неверный логин",
-        pattern: "[a-zA-Z0-9-_]*[a-zA-Z]",
-        minLength: 3,
-        maxLength: 20,
-        isErrored: false,
-        isErrorActive: false
-      },
-      {
-        name: "password",
-        isNameActive: true,
-        placeholder: "Пароль",
-        type: "password",
-        pattern: "^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$",
-        errortext: "Некорректный пароль",
-        minLength: 8,
-        maxLength: 40,
-        isErrored: false,
-        isErrorActive: false
-      }
-    ]
+export const loginParams: PropsWithChildren = {
+  title: 'Вход',
+  name: 'login',
+  buttontext: 'Авторизоваться',
+  linktext: 'Нет аккаунта?',
+  linkpath: './signin',
+  inputs: [
+    {
+      name: 'login',
+      isNameActive: true,
+      placeholder: 'Логин',
+      type: 'text',
+      errortext: 'Неверный логин',
+      pattern: '[a-zA-Z0-9-_]*[a-zA-Z]',
+      minLength: 3,
+      maxLength: 20,
+      isErrored: false,
+      isErrorActive: false,
+    },
+    {
+      name: 'password',
+      isNameActive: true,
+      placeholder: 'Пароль',
+      type: 'password',
+      pattern: '^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$',
+      errortext: 'Некорректный пароль',
+      minLength: 8,
+      maxLength: 40,
+      isErrored: false,
+      isErrorActive: false,
+    },
+  ],
 };
 
 export const signinParams: PropsWithChildren = {
-    title: "Регистрация", 
-    name: "signin", 
-    buttontext: "Зарегистрироваться", 
-    linktext: "Войти",
-    linkpath: "./login",
-    inputs: [
-      {
-        name: "email",
-        isNameActive: true,
-        placeholder: "Почта",
-        type: "email",
-        pattern: "\^\\S+@\\S+[\\.]\\S+\$",
-        errortext: "Некорректная почта",
-        minLength: 5,
-        maxLength: 200,
-        isErrored: false,
-        isErrorActive: false
-      },
-      {
-        name: "login",
-        isNameActive: true,
-        placeholder: "Логин",
-        type: "text",
-        pattern: "[a-zA-Z0-9-_]*[a-zA-Z]",
-        errortext: "Некорректный логин",
-        minLength: 3,
-        maxLength: 20,
-        isErrored: false,
-        isErrorActive: false
-      },
-      {
-        name: "first_name",
-        isNameActive: true,
-        placeholder: "Имя",
-        type: "text",
-        pattern: "^[A-Z][a-z-]+$|^[А-Я][а-я-]+$",
-        minLength: 1,
-        maxLength: 30,
-        errortext: "Некорректная запись",
-        isErrored: false,
-        isErrorActive: false
-      },
-      {
-        name: "second_name",
-        isNameActive: true,
-        placeholder: "Фамилия",
-        type: "text",
-        pattern: "^[A-Z][a-z-]+$|^[А-Я][а-я-]+$",
-        minLength: 1,
-        maxLength: 30,
-        errortext: "Некорректная запись",
-        isErrored: false,
-        isErrorActive: false
-      },
-      {
-        name: "phone",
-        isNameActive: true,
-        placeholder: "Телефон",
-        type: "text",
-        pattern: "\\+?\\d{10,15}",
-        minLength: 10,
-        maxLength: 15,
-        errortext: "Некорректная запись",
-        isErrored: false,
-        isErrorActive: false
-      },
-      {
-        name: "password",
-        isNameActive: true,
-        placeholder: "Пароль",
-        type: "password",
-        pattern: "^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$",
-        errortext: "Некорректный пароль",
-        minLength: 8,
-        maxLength: 40,
-        isErrored: true,
-        isErrorActive: false
-      },
-      {
-        name: "password_again",
-        isNameActive: true,
-        placeholder: "Пароль (ещё раз)",
-        type: "password",
-        pattern: "^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$",
-        errortext: "Некорректный пароль",
-        minLength: 8,
-        maxLength: 40,
-        isErrored: true,
-        isErrorActive: true
-      }
-    ]
+  title: 'Регистрация',
+  name: 'signin',
+  buttontext: 'Зарегистрироваться',
+  linktext: 'Войти',
+  linkpath: './login',
+  inputs: [
+    {
+      name: 'email',
+      isNameActive: true,
+      placeholder: 'Почта',
+      type: 'email',
+      pattern: '^\\S+@\\S+[\\.]\\S+$',
+      errortext: 'Некорректная почта',
+      minLength: 5,
+      maxLength: 200,
+      isErrored: false,
+      isErrorActive: false,
+    },
+    {
+      name: 'login',
+      isNameActive: true,
+      placeholder: 'Логин',
+      type: 'text',
+      pattern: '[a-zA-Z0-9-_]*[a-zA-Z]',
+      errortext: 'Некорректный логин',
+      minLength: 3,
+      maxLength: 20,
+      isErrored: false,
+      isErrorActive: false,
+    },
+    {
+      name: 'first_name',
+      isNameActive: true,
+      placeholder: 'Имя',
+      type: 'text',
+      pattern: '^[A-Z][a-z-]+$|^[А-Я][а-я-]+$',
+      minLength: 1,
+      maxLength: 30,
+      errortext: 'Некорректная запись',
+      isErrored: false,
+      isErrorActive: false,
+    },
+    {
+      name: 'second_name',
+      isNameActive: true,
+      placeholder: 'Фамилия',
+      type: 'text',
+      pattern: '^[A-Z][a-z-]+$|^[А-Я][а-я-]+$',
+      minLength: 1,
+      maxLength: 30,
+      errortext: 'Некорректная запись',
+      isErrored: false,
+      isErrorActive: false,
+    },
+    {
+      name: 'phone',
+      isNameActive: true,
+      placeholder: 'Телефон',
+      type: 'text',
+      pattern: '\\+?\\d{10,15}',
+      minLength: 10,
+      maxLength: 15,
+      errortext: 'Некорректная запись',
+      isErrored: false,
+      isErrorActive: false,
+    },
+    {
+      name: 'password',
+      isNameActive: true,
+      placeholder: 'Пароль',
+      type: 'password',
+      pattern: '^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$',
+      errortext: 'Некорректный пароль',
+      minLength: 8,
+      maxLength: 40,
+      isErrored: true,
+      isErrorActive: false,
+    },
+    {
+      name: 'password_again',
+      isNameActive: true,
+      placeholder: 'Пароль (ещё раз)',
+      type: 'password',
+      pattern: '^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$',
+      errortext: 'Некорректный пароль',
+      minLength: 8,
+      maxLength: 40,
+      isErrored: true,
+      isErrorActive: true,
+    },
+  ],
 };
 
 export const chatParams: PropsWithChildren = {
-    isChatChosen: false,
-    profileLink: "./profile",
-    popups: [
-      {
-        isActive: false,
-        isSettings: true,
-        isAdd: false,
-        buttons: [
-          {
-            imageLink: "../../src/static/add_user.svg",
-            buttonText: "Добавить пользователя",
-            popoverTarget: "popup_settings",
-            id: "add_user"
-          },
-          {
-            imageLink: "../../src/static/remove_user.svg",
-            buttonText: "Удалить пользователя",
-            popoverTarget: "popup_settings",
-            id: "remove_user"
-          }
-        ],
-      },
-      {
-        isActive: false,
-        isSettings: false,
-        isAdd: true,
-        buttons:[
-          {
-            imageLink: "../../src/static/add_media.svg",
-            buttonText: "Фото или Видео",
-            popoverTarget: "popup_add_data",
-            id: "add_media"
-          },
-          {
-            imageLink: "../../src/static/add_file.svg",
-            buttonText: "Файл",
-            popoverTarget: "popup_add_data",
-            id: "add_file"
-          },
-          {
-            imageLink: "../../src/static/add_location.svg",
-            buttonText: "Локация",
-            popoverTarget: "popup_add_data",
-            id: "add_geo"
-          }
-        ],
-      },
-    ],
-    addRemovePopups:[
-      {
-        id: "popup_add",
-        title: "Добавить пользователя",
-        username: "ivanivanov",
-        buttonText: "Добавить",
-      },
-      {
-        id: "popup_remove",
-        title: "Удалить пользователя",
-        username: "ivanivanov",
-        buttonText: "Удалить"
-      }
-    ],
-    chats:[
-      {
-        id:4,
-        imagePath: "",
-        name: "Вадим",
-        isSettingsActive: false,
-        isAddActive: false,
-        packs:[
-          {
-            date: "19 июня",
-            messages: [
-              {
-                isSideChanged: false,
-                isMessageMine:false,
-                isRead: false,
-                isText: true,
-                isImage: false,
-                time: "11:56",
-                content:{
-                  text: "Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. \n \n Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.",
-                  imageLink: ""
-                }
+  isChatChosen: false,
+  profileLink: './profile',
+  popups: [
+    {
+      isActive: false,
+      isSettings: true,
+      isAdd: false,
+      buttons: [
+        {
+          imageLink: '../../src/static/add_user.svg',
+          buttonText: 'Добавить пользователя',
+          popoverTarget: 'popup_settings',
+          id: 'add_user',
+        },
+        {
+          imageLink: '../../src/static/remove_user.svg',
+          buttonText: 'Удалить пользователя',
+          popoverTarget: 'popup_settings',
+          id: 'remove_user',
+        },
+      ],
+    },
+    {
+      isActive: false,
+      isSettings: false,
+      isAdd: true,
+      buttons: [
+        {
+          imageLink: '../../src/static/add_media.svg',
+          buttonText: 'Фото или Видео',
+          popoverTarget: 'popup_add_data',
+          id: 'add_media',
+        },
+        {
+          imageLink: '../../src/static/add_file.svg',
+          buttonText: 'Файл',
+          popoverTarget: 'popup_add_data',
+          id: 'add_file',
+        },
+        {
+          imageLink: '../../src/static/add_location.svg',
+          buttonText: 'Локация',
+          popoverTarget: 'popup_add_data',
+          id: 'add_geo',
+        },
+      ],
+    },
+  ],
+  addRemovePopups: [
+    {
+      id: 'popup_add',
+      title: 'Добавить пользователя',
+      username: 'ivanivanov',
+      buttonText: 'Добавить',
+    },
+    {
+      id: 'popup_remove',
+      title: 'Удалить пользователя',
+      username: 'ivanivanov',
+      buttonText: 'Удалить',
+    },
+  ],
+  chats: [
+    {
+      id: 4,
+      imagePath: '',
+      name: 'Вадим',
+      isSettingsActive: false,
+      isAddActive: false,
+      packs: [
+        {
+          date: '19 июня',
+          messages: [
+            {
+              isSideChanged: false,
+              isMessageMine: false,
+              isRead: false,
+              isText: true,
+              isImage: false,
+              time: '11:56',
+              content: {
+                // eslint-disable-next-line max-len
+                text: 'Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. \n \n Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.',
+                imageLink: '',
               },
-              {
-                isSideChanged: false,
-                isMessageMine:false,
-                isRead: false,
-                isText: false,
-                isImage: true,
-                time: "11:56",
-                content:{
-                  text: "",
-                  imageLink: "../../src/static/Снимок экрана 2020-06-21 в 19.18 1.png"
-                }
+            },
+            {
+              isSideChanged: false,
+              isMessageMine: false,
+              isRead: false,
+              isText: false,
+              isImage: true,
+              time: '11:56',
+              content: {
+                text: '',
+                imageLink: '../../src/static/Снимок экрана 2020-06-21 в 19.18 1.png',
               },
-              {
-                isSideChanged: true,
-                isMessageMine:true,
-                isRead: true,
-                isText: true,
-                isImage: false,
-                time: "12:00",
-                content:{
-                  text: "Круто!",
-                  imageLink: ""
-                }
-              }
-            ]
-          }
-        ]
-      },
-    ],
-    chatList:[
-      {
-        id: 1,
-        imagePath: "",
-        name: "Андрей",
-        lastMessage: "Изображение",
-        isMyMessage: false,
-        lastMessageTime: "10:49",
-        hasNewMessages: true,
-        isTooManyMessages: false,
-        newMessagesCount: 2,
-      },
-      {
-        id: 2,
-        imagePath: "",
-        name: "Киноклуб",
-        lastMessage: "стикер",
-        isMyMessage: true,
-        lastMessageTime: "12:00",
-        hasNewMessages: false,
-        isTooManyMessages: false,
-        newMessagesCount: 0,
-      },
-      {
-        id: 3,
-        imagePath: "",
-        name: "Илья",
-        lastMessage: "Друзья, у меня для вас особенный выпуск новостей! Итак...",
-        isMyMessage: false,
-        lastMessageTime: "15:12",
-        hasNewMessages: true,
-        isTooManyMessages: false,
-        newMessagesCount: 4,
-      },
-      {
-        id: 4,
-        imagePath: "",
-        name: "Вадим",
-        lastMessage: "Круто!",
-        isMyMessage: true,
-        lastMessageTime: "Пт",
-        hasNewMessages: false,
-        isTooManyMessages: false,
-        newMessagesCount: 0,
-      },
-      {
-        id: 5,
-        imagePath: "",
-        name: "тет-а-теты",
-        lastMessage: "И Human Interface Guidelines и Material Design рекомендуют...",
-        isMyMessage: false,
-        lastMessageTime: "Ср",
-        hasNewMessages: false,
-        isTooManyMessages: false,
-        newMessagesCount: 0,
-      },
-      {
-        id: 6,
-        imagePath: "",
-        name: "1, 2, 3",
-        lastMessage: "Миллионы россиян ежедневно проводят десятки часов свое...",
-        isMyMessage: false,
-        lastMessageTime: "Пн",
-        hasNewMessages: false,
-        isTooManyMessages: false,
-        newMessagesCount: 0,
-      },
-      {
-        id: 7,
-        imagePath: "",
-        name: "Design Destroyer",
-        lastMessage: "В 2008 году художник Jon Rafman  начал собирать...",
-        isMyMessage: false,
-        lastMessageTime: "Пн",
-        hasNewMessages: false,
-        isTooManyMessages: false,
-        newMessagesCount: 0,
-      },
-      {
-        id: 8,
-        imagePath: "",
-        name: "Day.",
-        lastMessage: "Так увлёкся работой по курсу, что совсем забыл его анонсир...",
-        isMyMessage: false,
-        lastMessageTime: "1 Мая 2020",
-        hasNewMessages: false,
-        isTooManyMessages: false,
-        newMessagesCount: 0,
-      },
-      {
-        id: 9,
-        imagePath: "",
-        name: "Стас Рогозин",
-        lastMessage: "Можно или сегодня или завтра вечером.",
-        isMyMessage: false,
-        lastMessageTime: "12 Апр 2020",
-        hasNewMessages: false,
-        isTooManyMessages: false,
-        newMessagesCount: 0,
-      }
-    ]
+            },
+            {
+              isSideChanged: true,
+              isMessageMine: true,
+              isRead: true,
+              isText: true,
+              isImage: false,
+              time: '12:00',
+              content: {
+                text: 'Круто!',
+                imageLink: '',
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  chatList: [
+    {
+      id: 1,
+      imagePath: '',
+      name: 'Андрей',
+      lastMessage: 'Изображение',
+      isMyMessage: false,
+      lastMessageTime: '10:49',
+      hasNewMessages: true,
+      isTooManyMessages: false,
+      newMessagesCount: 2,
+    },
+    {
+      id: 2,
+      imagePath: '',
+      name: 'Киноклуб',
+      lastMessage: 'стикер',
+      isMyMessage: true,
+      lastMessageTime: '12:00',
+      hasNewMessages: false,
+      isTooManyMessages: false,
+      newMessagesCount: 0,
+    },
+    {
+      id: 3,
+      imagePath: '',
+      name: 'Илья',
+      lastMessage: 'Друзья, у меня для вас особенный выпуск новостей! Итак...',
+      isMyMessage: false,
+      lastMessageTime: '15:12',
+      hasNewMessages: true,
+      isTooManyMessages: false,
+      newMessagesCount: 4,
+    },
+    {
+      id: 4,
+      imagePath: '',
+      name: 'Вадим',
+      lastMessage: 'Круто!',
+      isMyMessage: true,
+      lastMessageTime: 'Пт',
+      hasNewMessages: false,
+      isTooManyMessages: false,
+      newMessagesCount: 0,
+    },
+    {
+      id: 5,
+      imagePath: '',
+      name: 'тет-а-теты',
+      lastMessage: 'И Human Interface Guidelines и Material Design рекомендуют...',
+      isMyMessage: false,
+      lastMessageTime: 'Ср',
+      hasNewMessages: false,
+      isTooManyMessages: false,
+      newMessagesCount: 0,
+    },
+    {
+      id: 6,
+      imagePath: '',
+      name: '1, 2, 3',
+      lastMessage: 'Миллионы россиян ежедневно проводят десятки часов свое...',
+      isMyMessage: false,
+      lastMessageTime: 'Пн',
+      hasNewMessages: false,
+      isTooManyMessages: false,
+      newMessagesCount: 0,
+    },
+    {
+      id: 7,
+      imagePath: '',
+      name: 'Design Destroyer',
+      lastMessage: 'В 2008 году художник Jon Rafman  начал собирать...',
+      isMyMessage: false,
+      lastMessageTime: 'Пн',
+      hasNewMessages: false,
+      isTooManyMessages: false,
+      newMessagesCount: 0,
+    },
+    {
+      id: 8,
+      imagePath: '',
+      name: 'Day.',
+      lastMessage: 'Так увлёкся работой по курсу, что совсем забыл его анонсир...',
+      isMyMessage: false,
+      lastMessageTime: '1 Мая 2020',
+      hasNewMessages: false,
+      isTooManyMessages: false,
+      newMessagesCount: 0,
+    },
+    {
+      id: 9,
+      imagePath: '',
+      name: 'Стас Рогозин',
+      lastMessage: 'Можно или сегодня или завтра вечером.',
+      isMyMessage: false,
+      lastMessageTime: '12 Апр 2020',
+      hasNewMessages: false,
+      isTooManyMessages: false,
+      newMessagesCount: 0,
+    },
+  ],
 };
-

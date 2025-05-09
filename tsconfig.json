@@ -20,6 +20,6 @@
     },
     "include": [
       "src/**/*.ts",
-      ".eslint.cjs"
+      ".eslintrc"
     ]
 }

@@ -1,15 +1,15 @@
-import Block from "../../framework/Block";
-import { PropsWithChildren } from "../../utils/blockInterfaces";
+import Block from '../../framework/Block';
+import { PropsWithChildren } from '../../utils/blockInterfaces';
 
-export class ChatHeader extends Block{
-    constructor (props:PropsWithChildren){
-        super({
-          ...props
-        });
-    }
+export default class ChatHeader extends Block {
+  constructor(props:PropsWithChildren) {
+    super({
+      ...props,
+    });
+  }
 
-    override render(): string {
-        return`
+  override render(): string {
+    return `
         <div class="chat-header">
             <div class="chat-header__image-container">
                 <img class="chat-header__image" src="{{params.imagePath}}">
@@ -20,7 +20,6 @@ export class ChatHeader extends Block{
                 type="button" popovertarget="popup_settings"
             ></button>
         </div>
-        `
-    }
+        `;
+  }
 }
-

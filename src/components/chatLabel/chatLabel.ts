@@ -1,15 +1,15 @@
-import Block from "../../framework/Block";
-import { PropsWithChildren } from "../../utils/blockInterfaces";
+import Block from '../../framework/Block';
+import { PropsWithChildren } from '../../utils/blockInterfaces';
 
-export class Chatlabel extends Block{
-    constructor (props:PropsWithChildren){
-        super({
-            ...props,
-        });
-    }
+export default class Chatlabel extends Block {
+  constructor(props:PropsWithChildren) {
+    super({
+      ...props,
+    });
+  }
 
-    override render(): string {
-        return`
+  override render(): string {
+    return `
         <>
         <li class="chat-label__container" id="{{params.id}}">
             <div class="chat-label__image-container">
@@ -42,6 +42,6 @@ export class Chatlabel extends Block{
         </li>
         <div class="chat-list__border"></div>
         </>
-        `
-    }
+        `;
+  }
 }

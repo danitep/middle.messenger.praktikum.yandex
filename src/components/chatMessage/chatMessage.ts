@@ -1,16 +1,16 @@
-import Block from "../../framework/Block";
-import { PropsWithChildren } from "../../utils/blockInterfaces";
+import Block from '../../framework/Block';
+import { PropsWithChildren } from '../../utils/blockInterfaces';
 
-export class ChatMessage extends Block{
-    constructor (props:PropsWithChildren){
-        super({
-          ...props,
-          
-        });
-    }
+export default class ChatMessage extends Block {
+  constructor(props:PropsWithChildren) {
+    super({
+      ...props,
 
-    override render(): string {
-        return`
+    });
+  }
+
+  override render(): string {
+    return `
         {{#if params.isText}}
             <div class="chat-message 
             {{#if params.isSideChanged}}chat-message_side-changed{{/if}}
@@ -39,7 +39,6 @@ export class ChatMessage extends Block{
                 </p>
             </div>   
         {{/if}}
-        `
-    }
+        `;
+  }
 }
-

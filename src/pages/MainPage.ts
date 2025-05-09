@@ -1,16 +1,15 @@
-import Block from "../framework/Block";
-import { PropsWithChildren } from "../utils/blockInterfaces";
+import Block from '../framework/Block';
+import { PropsWithChildren } from '../utils/blockInterfaces';
 
+export default class MainPage extends Block {
+  constructor(props:PropsWithChildren) {
+    super({
+      ...props,
+    });
+  }
 
-export class MainPage extends Block{
-    constructor (props:PropsWithChildren){
-        super({
-            ...props,
-        });
-    }
-
-    override render(): string {
-        return`
+  override render(): string {
+    return `
         <div id="app">
             <main class="page__index">
                 <ul class="page__link-list">
@@ -23,7 +22,6 @@ export class MainPage extends Block{
                 </ul>   
             </main>
         </div>
-        `
-    }
+        `;
+  }
 }
-

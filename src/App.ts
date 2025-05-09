@@ -1,100 +1,105 @@
-//import * as Pages from './pages/index.js'
-import {err404Params, err5xxParams, profileParams, loginParams, signinParams, chatParams} from './utils/pageVariables.js'
-import { Login } from "./pages/login";
-import { Signin } from "./pages/signin";
-import { Err404 } from './pages/err404.js';
-import { Err5xx } from './pages/err5xx.js';
-import { Profile } from './pages/profile.js';
-import { ChatPage } from './pages/chats.js';
-import { MainPage } from './pages/MainPage.js';
-import Block from './framework/Block.js';
-
-
+// import * as Pages from './pages/index.js'
+import {
+  err404Params, err5xxParams, profileParams, loginParams, signinParams, chatParams,
+} from './utils/pageVariables';
+import Login from './pages/login';
+import Signin from './pages/signin';
+import Err404 from './pages/err404';
+import Err5xx from './pages/err5xx';
+import Profile from './pages/profile';
+import ChatPage from './pages/chats';
+import MainPage from './pages/MainPage';
+import Block from './framework/Block';
 
 export default class App {
-
-    state: {
+  state: {
         currentPage: string
     };
-    appElement:HTMLElement|null;
 
-    events = {
-        events: {
-            click: this.anchorHandler.bind(this)
-        }
-    }
+  appElement:HTMLElement|null;
 
-    constructor() {
-        const currentPage = localStorage.getItem('currentPage');
-        if(!currentPage){
-            localStorage.setItem("currentPage", "/main");
-            this.state = {
-                currentPage: '/main',
-            };
-        }
-        else{
-            this.state = {
-                currentPage: currentPage
-            };
-        }
-        this.appElement = document.getElementById("app");
-    }
+  events = {
+    events: {
+      click: this.anchorHandler.bind(this),
+    },
+  };
 
-    updatePage(newPage:Block){
-        if (this.appElement){
-            this.appElement.replaceWith(newPage.getContent() as Node);
-            this.appElement = document.getElementById("app");
-        }
-    }
+  pages:{[key: string]: Block};
 
-    anchorHandler(e:Event){
-        const self = this;
-        e.preventDefault();
-        if(e.target){
-            const newPath:string = (e.target as HTMLAnchorElement).pathname;
-            self.changePage(newPath);
-        }
+  constructor() {
+    this.pages = {
+      mainPage: new MainPage(this.events),
+      login: new Login(Object.assign(loginParams, this.events)),
+      signin: new Signin(Object.assign(signinParams, this.events)),
+      err404: new Err404(Object.assign(err404Params, this.events)),
+      err5xx: new Err5xx(Object.assign(err5xxParams, this.events)),
+      profilePage: new Profile(Object.assign(profileParams, this.events)),
+      chatPage: new ChatPage(Object.assign(chatParams, this.events)),
+    };
+    const currentPage = localStorage.getItem('currentPage');
+    if (!currentPage) {
+      localStorage.setItem('currentPage', '/main');
+      this.state = {
+        currentPage: '/main',
+      };
+    } else {
+      this.state = {
+        currentPage,
+      };
     }
-    
-    render(){        
-        if (this.appElement){
-            switch(true){
-                case this.state.currentPage === "/main":
-                    let mainPage = new MainPage(this.events);
-                    this.updatePage(mainPage)
-                    break;
-                case this.state.currentPage === "/login":
-                    let login = new Login(Object.assign(loginParams, this.events));
-                    this.updatePage(login)
-                    break;
-                case this.state.currentPage === "/signin":
-                    let signin = new Signin(Object.assign(signinParams, this.events));
-                    this.updatePage(signin)
-                    break;
-                case this.state.currentPage === "/err404":
-                    let err404 = new Err404(Object.assign(err404Params, this.events));
-                    this.updatePage(err404)
-                    break;
-                case this.state.currentPage === "/err5xx":
-                    let err5xx = new Err5xx(Object.assign(err5xxParams, this.events));
-                    this.updatePage(err5xx)
-                    break;
-                case this.state.currentPage === "/profile":
-                    let profilePage = new Profile(Object.assign(profileParams, this.events))
-                    this.updatePage(profilePage)
-                    break;
-                case this.state.currentPage === "/chats":
-                    let chatPage = new ChatPage(Object.assign(chatParams, this.events));
-                    this.updatePage(chatPage);
-                    break;
-            }
-        }
-    }
+    this.appElement = document.getElementById('app');
+    this.render();
+  }
 
-    changePage(page:string){
-        this.state.currentPage = page;
-        this.render();
+  updatePage(newPage:Block) {
+    if (this.appElement) {
+      this.appElement.replaceWith(newPage.getContent() as Node);
+      this.appElement = document.getElementById('app');
     }
+  }
+
+  anchorHandler(e:Event) {
+    const self = this;
+    e.preventDefault();
+    if (e.target) {
+      const newPath:string = (e.target as HTMLAnchorElement).pathname;
+      self.changePage(newPath);
+    }
+  }
+
+  render() {
+    if (this.appElement) {
+      switch (true) {
+        case this.state.currentPage === '/main':
+          this.updatePage(this.pages.mainPage);
+          break;
+        case this.state.currentPage === '/login':
+          this.updatePage(this.pages.login);
+          break;
+        case this.state.currentPage === '/signin':
+          this.updatePage(this.pages.signin);
+          break;
+        case this.state.currentPage === '/err404':
+          this.updatePage(this.pages.err404);
+          break;
+        case this.state.currentPage === '/err5xx':
+          this.updatePage(this.pages.err5xx);
+          break;
+        case this.state.currentPage === '/profile':
+          this.updatePage(this.pages.profilePage);
+          break;
+        case this.state.currentPage === '/chats':
+          this.updatePage(this.pages.chatPage);
+          break;
+        default:
+          this.updatePage(this.pages.err404);
+          break;
+      }
+    }
+  }
+
+  changePage(page:string) {
+    this.state.currentPage = page;
+    this.render();
+  }
 }
-
-

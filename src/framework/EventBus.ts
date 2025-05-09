@@ -1,6 +1,6 @@
 export default class EventBus {
-
-  listeners:{[key: string]: ((data: string) => void)[]}
+  // eslint-disable-next-line no-unused-vars
+  listeners:{[key: string]: ((data: string) => void)[]};
 
   constructor() {
     this.listeners = {};
@@ -12,27 +12,25 @@ export default class EventBus {
     }
 
     this.listeners[event].push(callback);
-  }
+  };
 
   off = (event:string, callback:any) => {
-        if (!this.listeners[event]) {
+    if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }
 
     this.listeners[event] = this.listeners[event].filter(
-      listener => listener !== callback
+      (listener) => listener !== callback,
     );
-  }
+  };
 
-    emit(event:string, ...args:any) {
+  emit(event:string, ...args:any) {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }
-    
-    this.listeners[event].forEach((listener) =>{
+
+    this.listeners[event].forEach((listener) => {
       listener(args);
     });
   }
 }
-
-

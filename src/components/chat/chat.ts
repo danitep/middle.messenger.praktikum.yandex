@@ -1,9 +1,8 @@
-import Block from "../../framework/Block";
-import { PropsWithChildren } from "../../utils/blockInterfaces";
-import { ChatHeader } from "../chatHeader/chatHeader";
-import { ChatMenu } from "../chatMenu/chatMenu";
-import { ChatWindow } from "../chatWindow/chatWindow";
-
+import Block from '../../framework/Block';
+import { PropsWithChildren } from '../../utils/blockInterfaces';
+import ChatHeader from '../chatHeader/chatHeader';
+import ChatMenu from '../chatMenu/chatMenu';
+import ChatWindow from '../chatWindow/chatWindow';
 
 /*
 Напоминалка на потом, чтобы поменять загрузку чата и возможную отправку сообщений
@@ -11,28 +10,26 @@ import { ChatWindow } from "../chatWindow/chatWindow";
 Типа загрузка сообщений, может даже добавка сообщений и т.д.
 */
 
-
-export class Chat extends Block{
-    constructor (props:PropsWithChildren){
-        delete props.events
-        console.log(props)
-        if(props.isChatChosen){
-            
-            super({
-                ...props,
-                chatHeader: new ChatHeader({params:props.openedChat}),
-                chatWindow: new ChatWindow({packs: (props.openedChat as PropsWithChildren).packs as PropsWithChildren}),
-                chatMenu: new ChatMenu({})
-              });
-        }
-        super({
-            ...props,
-          });
-        
+export default class Chat extends Block {
+  constructor(props:PropsWithChildren) {
+    delete props.events;
+    console.log(props);
+    if (props.isChatChosen) {
+      super({
+        ...props,
+        chatHeader: new ChatHeader({ params: props.openedChat }),
+        chatWindow: new ChatWindow({ packs: (props.openedChat as PropsWithChildren).packs as PropsWithChildren }),
+        chatMenu: new ChatMenu({}),
+      });
+    } else {
+      super({
+        ...props,
+      });
     }
+  }
 
-    override render(): string {
-        return`
+  override render(): string {
+    return `
         <div class="chat {{#if isChatChosen}}{{else}} chat_empty{{/if}}">
             {{#if isChatChosen}}
                 {{{chatHeader}}}
@@ -42,7 +39,6 @@ export class Chat extends Block{
                 <p>Выберите чат чтобы отправить сообщение</p>
             {{/if}}
         </div>
-        `
-    }
+        `;
+  }
 }
-

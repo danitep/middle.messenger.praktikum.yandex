@@ -1,25 +1,25 @@
-import Block from "../../framework/Block";
-import { PropsWithChildren } from "../../utils/blockInterfaces";
-import { ChatSettingsRow } from "../chatSettingsRow/chatSettingsRow";
+import Block from '../../framework/Block';
+import { PropsWithChildren } from '../../utils/blockInterfaces';
+import ChatSettingsRow from '../chatSettingsRow/chatSettingsRow';
 
-export class ChatSettingsPopup extends Block{
-    constructor (props:PropsWithChildren){
-        const popupsData:PropsWithChildren[] = props.buttons as PropsWithChildren[];
-        const chatSettingsRows:ChatSettingsRow[] = [];
+export default class ChatSettingsPopup extends Block {
+  constructor(props:PropsWithChildren) {
+    const popupsData:PropsWithChildren[] = props.buttons as PropsWithChildren[];
+    const chatSettingsRows:ChatSettingsRow[] = [];
 
-        popupsData.forEach((popupData:PropsWithChildren):void=>{
-            chatSettingsRows.push(new ChatSettingsRow({
-                params:popupData
-            })) 
-        })
-        super({
-          ...props,
-          chatSettingsRows:chatSettingsRows
-        });
-    }
+    popupsData.forEach((popupData:PropsWithChildren):void => {
+      chatSettingsRows.push(new ChatSettingsRow({
+        params: popupData,
+      }));
+    });
+    super({
+      ...props,
+      chatSettingsRows,
+    });
+  }
 
-    override render(): string {
-        return`
+  override render(): string {
+    return `
         <div class="
         additional-popup 
         {{#if isActive}}additional-popup_active{{/if}}
@@ -31,7 +31,6 @@ export class ChatSettingsPopup extends Block{
         id="{{#if isSettings}}popup_settings{{/if}}{{#if isAdd}}popup_add_data{{/if}}">
             {{{chatSettingsRows}}}
         </div>
-        `
-    }
+        `;
+  }
 }
-

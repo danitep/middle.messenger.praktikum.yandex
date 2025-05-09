@@ -1,16 +1,16 @@
-import Block from "../../framework/Block";
-import { PropsWithChildren } from "../../utils/blockInterfaces";
+import Block from '../../framework/Block';
+import { PropsWithChildren } from '../../utils/blockInterfaces';
 
-export class ProfileLink extends Block{
-    constructor (props:PropsWithChildren){
-        super({
-            ...props,
-        });
-    }
+export default class ProfileLink extends Block {
+  constructor(props:PropsWithChildren) {
+    super({
+      ...props,
+    });
+  }
 
-    override render(): string {
-        return`
+  override render(): string {
+    return `
         <a class="profile__link" href="{{{params.link}}}">{{params.text}}</a>
-        `
-    }
+        `;
+  }
 }

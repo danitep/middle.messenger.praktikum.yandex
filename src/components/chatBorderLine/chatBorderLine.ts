@@ -1,15 +1,15 @@
-import Block from "../../framework/Block";
+import Block from '../../framework/Block';
 
-export class ChatBorderLine extends Block{
-    constructor (){
-        super({
-          
-        });
-    }
+export default class ChatBorderLine extends Block {
+  constructor() {
+    super({
 
-    override render(): string {
-        return`
+    });
+  }
+
+  override render(): string {
+    return `
         <div class="chat-list__border"></div>
-        `
-    }
+        `;
+  }
 }
