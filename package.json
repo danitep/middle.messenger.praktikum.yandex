@@ -30,7 +30,8 @@
     "stylelint": "^16.19.1",
     "stylelint-config-standard": "^38.0.0",
     "stylelint-order": "^7.0.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "vite": "^6.3.5"
   },
   "dependencies": {
     "express": "^5.1.0",
@@ -38,7 +39,6 @@
     "node": "^24.0.0",
     "sass": "^1.86.3",
     "validator": "^13.15.0",
-    "vite-plugin-handlebars": "^1.5.0",
-    "vite": "^6.3.5"
+    "vite-plugin-handlebars": "^1.5.0"
   }
 }
