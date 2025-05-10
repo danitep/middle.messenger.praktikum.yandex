@@ -1,12 +1,12 @@
 .popup{
-    margin:  230px auto 0 auto;
+    margin:  230px auto 0;
     width: 340px;
     height: 257px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 12px;
-    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.14);
+    box-shadow: 0 0 6px 0 rgb(0 0 0 / 14%);
     background-color: #fff;
 
     &__layout{
@@ -20,15 +20,16 @@
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba($color: #000000, $alpha: 0.4);
+        background-color: rgb(0 0 0 / 40%);
         z-index: 2;
 
         &_hidden{
             visibility: hidden;
         }
     }
+
     &__title{
-        margin: 40px auto 0 auto;
+        margin: 40px auto 0;
         padding: 0;
         font-weight: 500;
         font-size: 15px;
@@ -39,8 +40,9 @@
             color: #ff2f2f;;
         }
     }
+
     &__image-name{
-        margin: 45px auto 0 auto;
+        margin: 0;
         padding: 0;
         font-weight: 500;
         font-size: 14px;
@@ -48,8 +50,9 @@
         text-align: center;
         color: #8d8d8d;
     }
+
     &__file-button{
-        margin: 45px auto 0 auto;
+        margin: 45px auto 0;
         padding: 0;
         width: 122px;
         height: 32px;
@@ -57,20 +60,21 @@
         border: none;
         display: flex;
         flex-direction: column;
-        
         cursor: pointer;
         
         input#file-upload-button{
             background-color: red;
         }
     }
+
     &__file-input{
-        margin: 0 0 -32px 0;
+        margin: 0 0 -32px;
         padding: 0;
         width: 100%;
         min-height: 100%;
         opacity: 0;
     }
+
     &__input-text{
         margin: 0;
         padding: 0;
@@ -83,8 +87,9 @@
         text-align: center;
         color: #3369f3;
     }
+
     &__submit-button{
-        margin: auto auto 0 auto;
+        margin: auto auto 0;
         padding: 0;
         width: 280px;
         height: 37px;
@@ -96,9 +101,21 @@
         line-height: 100%;
         text-align: center;
         color: #fff;
+        opacity: 1;
+        transition: 
+            opacity  0.3s linear;
+
+        &:hover{
+            opacity: 0.8;
+        }
+
+        &:disabled{
+            background: #676767;
+        }
     }
+
     &__error{
-        margin: 15px auto 14px auto;
+        margin: 15px auto 14px;
         padding: 0;
         font-weight: 500;
         font-size: 11px;

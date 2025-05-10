@@ -6,18 +6,39 @@
   "engines": {
     "node": ">=16"
   },
+  "targets": {
+    "default": {
+      "includeNodeModules": true
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "start": "vite build && vite preview --port 3000",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "lint:style": "stylelint \"**/*.scss\"",
+    "lint:style:fix": "stylelint \"**/*.scss\" --fix"
   },
   "devDependencies": {
-    "vite": "^6.2.0"
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "stylelint": "^16.19.1",
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-order": "^7.0.0",
+    "typescript": "^5.5.4",
+    "vite": "^6.3.5"
   },
   "dependencies": {
     "express": "^5.1.0",
+    "handlebars": "^4.7.8",
+    "node": "^24.0.0",
     "sass": "^1.86.3",
-    "vite-plugin-handlebars": "^2.0.0"
+    "validator": "^13.15.0",
+    "vite-plugin-handlebars": "^1.5.0"
   }
 }

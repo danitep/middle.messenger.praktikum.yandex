@@ -1,21 +1,23 @@
 
 .err-page {
     &__header {
-        margin: 280px auto 20px auto;
+        margin: 280px auto 20px;
         font-weight: 500;
         font-size: 40px;
         line-height: 100%;
         text-align: center;
     }
+
     &__greeting {
-        margin: 0 auto 70px auto;
+        margin: 0 auto 70px;
         font-weight: 500;
         font-size: 20px;
         line-height: 100%;
         text-align: center;
     }
+
     &__link {
-        margin: 0 auto 0 auto;
+        margin: 0 auto;
         text-decoration: none;
         font-weight: 500;
         font-size: 11px;
