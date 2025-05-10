@@ -1,4 +1,5 @@
-enum METHOD {
+/* eslint-disable no-unused-vars */
+enum METHOD {// в упор не видит, что METHOD вызывается в коде
         GET = 'GET',
         POST = 'POST',
         PUT = 'PUT',
@@ -22,7 +23,7 @@ function queryStringify(data: string) {
   return keys.reduce((result, key, index) => `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`, '?');
 }
 
-class HTTPTransport {
+export default class HTTPTransport {
   get = (url:string, options:Options = { method: METHOD.GET }) => this.request(url, { ...options, method: METHOD.GET }, options.timeout);
 
   post = (url:string, options:Options = { method: METHOD.POST }) => this.request(url, { ...options, method: METHOD.POST }, options.timeout);
@@ -54,7 +55,7 @@ class HTTPTransport {
         xhr.setRequestHeader(key, headers[key]);
       });
 
-      xhr.onload = function () {
+      xhr.onload = () => {
         resolve(xhr);
       };
 

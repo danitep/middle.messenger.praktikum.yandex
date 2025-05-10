@@ -50,6 +50,7 @@ export default class ProfileInfo extends Block {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const inputs = form.querySelectorAll('input');
+    const errortext = form.querySelector('#submit_err');
     let allValid = true;
     const validityArray:boolean[] = [];
     inputs.forEach((input:HTMLInputElement) => {
@@ -75,9 +76,15 @@ export default class ProfileInfo extends Block {
             this._changeProps('isPasswordEditable', false);
           }
         } else if (inputs[1].value === inputs[0].value) {
-          alert('Новый пароль идентичен предыдущему!');
+          if (errortext) {
+            errortext.classList.add('profile__errortext_active');
+            errortext.textContent = 'Новый пароль идентичен предыдущему!';
+          }
         } else if (inputs[2].value !== inputs[1].value) {
-          alert('Новые пароли не совпадают!');
+          if (errortext) {
+            errortext.classList.add('profile__errortext_active');
+            errortext.textContent = 'Новые пароли не совпадают!';
+          }
         }
       } else {
         inputs.forEach((input) => {
@@ -93,7 +100,11 @@ export default class ProfileInfo extends Block {
         }
       }
     } else {
-      alert('Испраьте некорректные поля');
+      const errortext = form.querySelector('#submit_err');
+      if (errortext) {
+        errortext.classList.add('profile__errortext_active');
+        errortext.textContent = 'Испраьте некорректные поля';
+      }
     }
   }
 

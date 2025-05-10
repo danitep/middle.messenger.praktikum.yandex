@@ -74,7 +74,9 @@ export default class ProfileForm extends Block {
                     {{{passwordRows}}}
                 </div>
 
+                <p class="profile__errortext" id="submit_err"></p>
                 <button class="profile__save" type="submit">Сохранить</button>
+                
             {{else}}
                 <div class="profile__row-container">
                     {{{profileRows}}}
@@ -85,6 +87,7 @@ export default class ProfileForm extends Block {
                         {{{buttons}}}
                     </div>
                 {{else}}
+                    <p class="profile__errortext" id="submit_err"></p>
                     <button class="profile__save" type="submit">Сохранить</button>
                 {{/if}}
             {{/if}}

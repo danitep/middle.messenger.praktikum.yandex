@@ -79,7 +79,8 @@ export default class Form extends Block {
         console.log(submitValue);
       }
     } else {
-      alert('Испраьте некорректные поля');
+      // планировал обработать ошибку, вслучае некорректных полей, но он сам не даёт отправить
+      // submit при некорректных полях, так что заглушка на всякий случай
     }
   }
 
@@ -89,9 +90,7 @@ export default class Form extends Block {
             <h2 class="form__title">{{title}}</h2>
             <form class="form__list form__list_type_{{name}}" id="{{name}}__form" name={{name}} onSubmit={}>
                 {{{inputs}}}
-                
-            <button class="form__button" type="submit">{{buttontext}}</button>
-            
+              <button class="form__button" type="submit">{{buttontext}}</button>
             </form>
             <a class="form__link" href="{{linkpath}}">{{linktext}}</a>
         </main>
