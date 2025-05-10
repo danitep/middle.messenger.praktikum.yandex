@@ -132,5 +132,4 @@ chatParams - параметры для отображения страницы �
  - newMessagesCount - количество новых сообщений
  - isActive - "чат открыт?"
 ## Ссылка на Pull Request
-
-
+https://github.com/danitep/middle.messenger.praktikum.yandex/pull/2
