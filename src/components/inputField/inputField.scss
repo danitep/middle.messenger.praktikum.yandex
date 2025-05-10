@@ -1,7 +1,7 @@
 
 .field {
     &__container {
-        margin: 0 auto 16px auto;
+        margin: 0 auto 16px;
         padding: 0;
         border: none;
         display: flex;
@@ -20,9 +20,10 @@
             color: #999;
         }
     }
+
     &__input{
-        margin: 6px 0 0 0;
-        padding: 0 0 5px 0;
+        margin: 6px 0 0;
+        padding: 0 0 5px;
         width: 280px;
         border: none;
         border-bottom: 1px solid #3369f3;
@@ -34,8 +35,9 @@
             color: #ff2f2f;
         }
     }
+
     &__error{
-        margin: 7px 0 0 0;
+        margin: 7px 0 0;
         padding: 0;
         font-weight: 400;
         font-size: 8px;
@@ -47,9 +49,9 @@
             display: block;
         }
     }
+
     &__button{
-        margin: auto auto 0 auto;
-        
+        margin: auto auto 0;
         border-radius: 8px;
         width: 280px;
         height: 37px;
@@ -60,8 +62,9 @@
         text-align: center;
         color: #fff;
     }
+
     &__link{
-        margin: 14px auto 30px auto;
+        margin: 14px auto 30px;
         padding: 0;
         font-weight: 500;
         font-size: 11px;

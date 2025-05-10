@@ -1,7 +1,7 @@
 .profile{
     &__text-container{
-        margin: 0 0 7px 0;
-        padding: 0 0 10px 0;
+        margin: 0 0 7px;
+        padding: 0 0 10px;
         border: none;
         border-bottom: 1px solid #eaeaea;
         display: flex;
@@ -14,6 +14,7 @@
             padding: 0;
         }
     }
+
     &__input{
         margin: 0;
         padding: 0;
@@ -29,6 +30,7 @@
             border: red 1px solid;
         }
     }
+
     &__row-name{
         margin: 0;
         padding: 0;
