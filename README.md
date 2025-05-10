@@ -2,6 +2,8 @@
 
 Проект курса "Мидл фронтенд-разработчик"
 
+## Что нового
+В спринте 2 сборка переведена с шаблонов handlebars на typesctript. Были созданы компоненты для отображения элементов страниц. Была создана имитация перехода по ссылкам путём перерендера страницы.
 
 
 ## Установка
@@ -17,7 +19,7 @@
 Netlify: https://middle-messenger-danitep.netlify.app
 
 * ссылки на страницы:
-
+(ссылки не обновлены, так что там проект старой версии)
 main: https://middle-messenger-danitep.netlify.app
 page404: https://middle-messenger-danitep.netlify.app/src/pages/err404
 page500: https://middle-messenger-danitep.netlify.app/src/pages/err5xx
