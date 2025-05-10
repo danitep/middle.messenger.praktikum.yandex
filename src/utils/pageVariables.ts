@@ -30,8 +30,6 @@ export const profileParams: PropsWithChildren = {
       pattern: '^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$',
       minLength: 8,
       maxLength: 40,
-      isErrored: false,
-      isErrorActive: false,
     },
     {
       name: 'newPassword',
@@ -41,8 +39,6 @@ export const profileParams: PropsWithChildren = {
       pattern: '^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$',
       minLength: 8,
       maxLength: 40,
-      isErrored: false,
-      isErrorActive: false,
     },
     {
       name: 'newPasswordAgain',
@@ -52,8 +48,6 @@ export const profileParams: PropsWithChildren = {
       pattern: '^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$',
       minLength: 8,
       maxLength: 40,
-      isErrored: false,
-      isErrorActive: false,
     },
   ],
   profileRowsData: [
@@ -65,8 +59,6 @@ export const profileParams: PropsWithChildren = {
       pattern: '^\\S+@\\S+[\\.]\\S+$',
       minLength: 5,
       maxLength: 200,
-      isErrored: false,
-      isErrorActive: false,
     },
     {
       name: 'login',
@@ -76,8 +68,6 @@ export const profileParams: PropsWithChildren = {
       pattern: '[a-zA-Z0-9-_]*[a-zA-Z]',
       minLength: 3,
       maxLength: 20,
-      isErrored: false,
-      isErrorActive: false,
     },
     {
       name: 'first_name',
@@ -87,8 +77,6 @@ export const profileParams: PropsWithChildren = {
       pattern: '^[A-Z][a-z]+$|^[А-Я][а-я]+$',
       minLength: 1,
       maxLength: 30,
-      isErrored: false,
-      isErrorActive: false,
     },
     {
       name: 'second_name',
@@ -98,8 +86,6 @@ export const profileParams: PropsWithChildren = {
       pattern: '^[A-Z][a-z-]+$|^[А-Я][а-я-]+$',
       minLength: 1,
       maxLength: 30,
-      isErrored: false,
-      isErrorActive: false,
     },
     {
       name: 'display_name',
@@ -108,8 +94,6 @@ export const profileParams: PropsWithChildren = {
       value: 'Иван',
       minLength: 1,
       maxLength: 200,
-      isErrored: false,
-      isErrorActive: false,
     },
     {
       name: 'phone',
@@ -119,8 +103,6 @@ export const profileParams: PropsWithChildren = {
       pattern: '\\+?\\d{10,15}',
       minLength: 10,
       maxLength: 15,
-      isErrored: false,
-      isErrorActive: false,
     },
   ],
   buttonsData: [
@@ -155,8 +137,6 @@ export const loginParams: PropsWithChildren = {
       pattern: '[a-zA-Z0-9-_]*[a-zA-Z]',
       minLength: 3,
       maxLength: 20,
-      isErrored: false,
-      isErrorActive: false,
     },
     {
       name: 'password',
@@ -167,8 +147,6 @@ export const loginParams: PropsWithChildren = {
       errortext: 'Некорректный пароль',
       minLength: 8,
       maxLength: 40,
-      isErrored: false,
-      isErrorActive: false,
     },
   ],
 };
@@ -189,8 +167,6 @@ export const signinParams: PropsWithChildren = {
       errortext: 'Некорректная почта',
       minLength: 5,
       maxLength: 200,
-      isErrored: false,
-      isErrorActive: false,
     },
     {
       name: 'login',
@@ -201,8 +177,6 @@ export const signinParams: PropsWithChildren = {
       errortext: 'Некорректный логин',
       minLength: 3,
       maxLength: 20,
-      isErrored: false,
-      isErrorActive: false,
     },
     {
       name: 'first_name',
@@ -213,8 +187,6 @@ export const signinParams: PropsWithChildren = {
       minLength: 1,
       maxLength: 30,
       errortext: 'Некорректная запись',
-      isErrored: false,
-      isErrorActive: false,
     },
     {
       name: 'second_name',
@@ -225,8 +197,6 @@ export const signinParams: PropsWithChildren = {
       minLength: 1,
       maxLength: 30,
       errortext: 'Некорректная запись',
-      isErrored: false,
-      isErrorActive: false,
     },
     {
       name: 'phone',
@@ -237,8 +207,6 @@ export const signinParams: PropsWithChildren = {
       minLength: 10,
       maxLength: 15,
       errortext: 'Некорректная запись',
-      isErrored: false,
-      isErrorActive: false,
     },
     {
       name: 'password',
@@ -249,8 +217,6 @@ export const signinParams: PropsWithChildren = {
       errortext: 'Некорректный пароль',
       minLength: 8,
       maxLength: 40,
-      isErrored: true,
-      isErrorActive: false,
     },
     {
       name: 'password_again',
@@ -261,8 +227,6 @@ export const signinParams: PropsWithChildren = {
       errortext: 'Некорректный пароль',
       minLength: 8,
       maxLength: 40,
-      isErrored: true,
-      isErrorActive: true,
     },
   ],
 };
