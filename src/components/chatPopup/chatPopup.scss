@@ -1,12 +1,12 @@
 .chat-popup{
-    margin:  232px auto 0 auto;
+    margin:  232px auto 0;
     width: 340px;
     height: 257px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 12px;
-    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.14);
+    box-shadow: 0 0 6px 0 rgb(0 0 0 / 14%);
     background-color: #fff;
 
     &__layout{
@@ -20,15 +20,17 @@
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba($color: #000000, $alpha: 0.4);
+        background-color: rgb(0 0 0 / 40%);
         z-index: 2;
+        visibility: hidden;
 
-        &_hidden{
-            visibility: hidden;
+        &_active{
+            visibility: visible;
         }
     }
+
     &__title{
-        margin: 40px auto 0 auto;
+        margin: 40px auto 0;
         padding: 0;
         font-weight: 500;
         font-size: 15px;
@@ -36,6 +38,7 @@
         text-align: center;
         color: #1e1e1e;
     }
+
     &__span{
         margin: 50px auto 0 30px;
         padding: 0;
@@ -44,9 +47,10 @@
         line-height: 100%;
         color: #999;
     }
+
     &__input{
         margin: 5px auto 0 30px;
-        padding: 0 0 7px 0;
+        padding: 0 0 7px;
         width: calc(100% - 60px);
         background: none;
         border: none;
@@ -58,7 +62,7 @@
     }
 
     &__submit-button{
-        margin: 33px 30px 40px 30px;
+        margin: 33px 30px 40px;
         padding: 0;
         width: 280px;
         height: 37px;

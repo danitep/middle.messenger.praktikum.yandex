@@ -1,36 +1,38 @@
 .chat-message{
-    margin: 10px 0 0 0;
+    margin: 10px 0 0;
     padding: 11px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     border: none;
-    border-radius: 0 12px 12px 12px;
+    border-radius: 0 12px 12px;
     background-color: #F8F8F8;
     max-width: 402px;
 
     &_content-image{
-        padding: 0 0 11px 0;
+        padding: 0 0 11px;
         max-width: 316px;
     }
 
     &_my{
-        border-radius: 12px 12px 0 12px;
+        border-radius: 12px 12px 0;
         max-width: 350px;
         align-self: flex-end;
         flex-direction: row;
         background-color: #E4EDFD;
     }
+
     &_my-image{
-        border-radius: 12px 12px 0 12px;
+        border-radius: 12px 12px 0;
         align-self: flex-end;
     }
 
     &:first-child{
-        margin: 30px 0 0 0;
+        margin: 30px 0 0;
     }
+
     &_side-changed{
-        margin: 30px 0 0 0;
+        margin: 30px 0 0;
     }
 
     &__text{
@@ -42,8 +44,9 @@
         color: #1e1e1e;
         white-space: pre-line;
     }
+
     &__time{
-        margin: -9px 0 0 0;
+        margin: -9px 0 0;
         padding: 0;
         font-weight: 500;
         font-size: 9px;
@@ -56,22 +59,25 @@
             width: 37px;
             color: #3369f3;
         }
+
         &_read{
-            background: no-repeat url(../../static/message_read.svg) left 100%;
+            background: no-repeat url("../../static/message_read.svg") left 100%;
         }
+
         &_with-image{
             margin: -24px 11px 0 0;
             border-radius: 30px;
             align-self: flex-end;
             width: 37px;
             height: 13px;
-            background: rgba(82, 82, 82, 0.5);
+            background: rgb(82 82 82 / 50%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: #fff;
         }
     }
+
     &__image{
         margin: 0;
         padding: 0;
