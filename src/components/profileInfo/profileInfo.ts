@@ -1,25 +1,37 @@
+import authApi, { AuthAPI } from '../../api/authApi';
 import Block from '../../framework/Block';
-import { PropsWithChildren } from '../../utils/blockInterfaces';
+import { Props, PropsWithChildren } from '../../utils/blockInterfaces';
+import { is500Error } from '../../utils/extraFunctions';
 import ProfileForm from '../profileForm/profileForm';
+import router, { Router } from '../router/router';
 
-const createProfileForm = (params:PropsWithChildren) => new ProfileForm({
+const createProfileForm = (params:PropsWithChildren, self:ProfileInfo) => new ProfileForm({
   profileRowsData: params.profileRowsData,
   passwordRowsData: params.passwordRowsData,
   isEditDisabled: params.isEditDisabled,
   isPasswordEditable: params.isPasswordEditable,
   buttonsData: params.buttonsData,
+  events: { // пришлось в тупую прокинуть ниже, т.к. без этого почему-то кнопки не работали на второй раз
+    click_button: self.changeForm.bind(self),
+    submit: self.onFormSubmit.bind(self),
+    click: self.onExitClick.bind(self),
+  },
 });
 
 export default class ProfileInfo extends Block {
+  router: Router;
+
+  authApi: AuthAPI;
+
   constructor(props:PropsWithChildren) {
     const params:PropsWithChildren = props.params as PropsWithChildren;
-    const profileForm = createProfileForm(params);
     super({
       ...props,
-      profileForm,
     });
-
+    this.router = router;
+    this.authApi = authApi;
     const newProps = props;
+    const profileForm = createProfileForm(params, this);
     const additionalProps = {
       profileForm,
     };
@@ -27,7 +39,7 @@ export default class ProfileInfo extends Block {
       events: {
         click_button: this.changeForm.bind(this),
         submit: this.onFormSubmit.bind(this),
-        click: (props.events as PropsWithChildren).click,
+        click: this.onExitClick.bind(this),
         blur: this.onInputBlur.bind(this),
         click_image: (props.events as PropsWithChildren).click_image,
       },
@@ -35,6 +47,19 @@ export default class ProfileInfo extends Block {
     const propsWithEvents = Object.assign(newProps, additionalProps, events);
     console.log(propsWithEvents);
     this.setProps(propsWithEvents);
+  }
+
+  async onExitClick(e:Event) {
+    e.preventDefault();
+    if (e.target) {
+      const newPath:string = (e.target as HTMLAnchorElement).pathname;
+      await this.authApi.logout()
+        .catch((err: Error) => {
+          is500Error(err);
+          console.log(err);
+        });
+      this.router.go(newPath);
+    }
   }
 
   onInputBlur(e:Event) {
@@ -47,6 +72,7 @@ export default class ProfileInfo extends Block {
   }
 
   onFormSubmit(e:Event) {
+    // где-нибудь написать косяк, чтобы словить ошибку, а потом протестить выход по роутеру куда-нибудь, типа ошибки 500
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const inputs = form.querySelectorAll('input');
@@ -68,8 +94,8 @@ export default class ProfileInfo extends Block {
           inputs.forEach((input) => {
             submitValue[input.name] = input.value;
           });
-          // пока не сделана связь с сервером, то просто затычка
-          console.log(submitValue);
+          ((this.props.params as Props).changePassword as Function)(submitValue);
+
           if (form.name === 'profileForm') {
             this._changeProps('isEditDisabled', true);
           } else {
@@ -86,13 +112,12 @@ export default class ProfileInfo extends Block {
             errortext.textContent = 'Новые пароли не совпадают!';
           }
         }
-      } else {
+      } else { // данные профиля
         inputs.forEach((input) => {
           submitValue[input.name] = input.value;
         });
 
-        // пока не сделана связь с сервером, то просто затычка
-        console.log(submitValue);
+        ((this.props.params as Props).changeProfileData as Function)(submitValue);
         if (form.name === 'profileForm') {
           this._changeProps('isEditDisabled', true);
         } else {
@@ -122,13 +147,14 @@ export default class ProfileInfo extends Block {
     let newProps:PropsWithChildren = this.props as PropsWithChildren;
     (newProps.params as PropsWithChildren)[propName] = value;
 
-    const profileForm = { profileForm: createProfileForm(newProps.params as PropsWithChildren) };
+    const profileForm = { profileForm: createProfileForm(newProps.params as PropsWithChildren, this) };
     const events = {
       events: (this.props as PropsWithChildren).events,
     };
     newProps = Object.assign(newProps, profileForm, events);
+    console.log(newProps);
     this.setProps(newProps);
-    this.render();
+    // this.render();
   }
 
   override render(): string {
@@ -141,7 +167,7 @@ export default class ProfileInfo extends Block {
                 <input type="image" 
                 name="avatar" 
                 class="profile__image" 
-                src={{params.avatarTempPath}} 
+                src="{{params.avatarTempPath}}" 
                 alt="Аватар">
             </div>
 

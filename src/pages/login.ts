@@ -1,9 +1,11 @@
 import Block from '../framework/Block';
 import { PropsWithChildren } from '../utils/blockInterfaces';
 import Form from '../components/form/form';
+import { checkIfAuthorized } from '../utils/extraFunctions';
 
 export default class Login extends Block {
   constructor(props:PropsWithChildren) {
+    checkIfAuthorized();
     super({
       ...props,
       form: new Form({

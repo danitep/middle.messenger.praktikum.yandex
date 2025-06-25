@@ -13,8 +13,9 @@ export default class ChatListContainer extends Block {
         params: chatData,
       }));
     });
+    console.log((props.chatList as PropsWithChildren[]).length === 0);
     super({
-      noMatch: false,
+      noMatch: (props.chatList as PropsWithChildren[]).length === 0,
       chatLabelElements,
       backup: {
         allLabels: chatLabelElements,

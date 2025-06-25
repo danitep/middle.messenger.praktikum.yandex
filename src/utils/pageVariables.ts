@@ -3,17 +3,17 @@ import { PropsWithChildren } from './blockInterfaces';
 export const err404Params: PropsWithChildren = {
   number: 404,
   greeting: 'Не туда попали',
-  link: './chats',
+  link: './messenger',
 };
 
 export const err5xxParams: PropsWithChildren = {
   number: 500,
   greeting: 'Мы уже фиксим',
-  link: './chats',
+  link: './messenger',
 };
 
 export const profileParams: PropsWithChildren = {
-  linkpath: './chats',
+  linkpath: './messenger',
   avatarTempPath: '../../src/static/avatar.svg',
   username: 'Иван',
   isEditDisabled: true,
@@ -26,7 +26,7 @@ export const profileParams: PropsWithChildren = {
       name: 'oldPassword',
       placeholder: 'Старый пароль',
       type: 'password',
-      value: '1234567A',
+      value: '',
       pattern: '^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$',
       minLength: 8,
       maxLength: 40,
@@ -35,7 +35,7 @@ export const profileParams: PropsWithChildren = {
       name: 'newPassword',
       placeholder: 'Новый пароль',
       type: 'password',
-      value: '12345678A',
+      value: '',
       pattern: '^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$',
       minLength: 8,
       maxLength: 40,
@@ -44,7 +44,7 @@ export const profileParams: PropsWithChildren = {
       name: 'newPasswordAgain',
       placeholder: 'Повторите новый пароль',
       type: 'password',
-      value: '12345678A',
+      value: '',
       pattern: '^(?=.*?[A-ZА-Я])(?=.*?[0-9]).{8,}$',
       minLength: 8,
       maxLength: 40,
@@ -116,7 +116,7 @@ export const profileParams: PropsWithChildren = {
     },
     {
       text: 'Выйти',
-      link: '/main',
+      link: '/',
     },
   ],
 };
@@ -126,7 +126,7 @@ export const loginParams: PropsWithChildren = {
   name: 'login',
   buttontext: 'Авторизоваться',
   linktext: 'Нет аккаунта?',
-  linkpath: './signin',
+  linkpath: './sign-up',
   inputs: [
     {
       name: 'login',
@@ -156,7 +156,7 @@ export const signinParams: PropsWithChildren = {
   name: 'signin',
   buttontext: 'Зарегистрироваться',
   linktext: 'Войти',
-  linkpath: './login',
+  linkpath: './',
   inputs: [
     {
       name: 'email',
@@ -233,7 +233,26 @@ export const signinParams: PropsWithChildren = {
 
 export const chatParams: PropsWithChildren = {
   isChatChosen: false,
-  profileLink: './profile',
+  profileLink: './settings',
+  submenu: {
+    isActive: false,
+    isSettings: true,
+    isAdd: false,
+    buttons: [
+      {
+        imageLink: '../../src/static/add_user.svg',
+        buttonText: 'Создать чат',
+        popoverTarget: 'submenu',
+        id: 'add_chat',
+      },
+      {
+        imageLink: '../../src/static/remove_user.svg',
+        buttonText: 'Удалить чат',
+        popoverTarget: 'submenu',
+        id: 'remove_chat',
+      },
+    ],
+  },
   popups: [
     {
       isActive: false,
@@ -282,16 +301,31 @@ export const chatParams: PropsWithChildren = {
   ],
   addRemovePopups: [
     {
-      id: 'popup_add',
+      id: 'popup_add_user',
       title: 'Добавить пользователя',
-      username: 'ivanivanov',
+      buttonId: 'add_user',
       buttonText: 'Добавить',
     },
     {
-      id: 'popup_remove',
+      id: 'popup_remove_user',
       title: 'Удалить пользователя',
-      username: 'ivanivanov',
+      buttonId: 'remove_user',
       buttonText: 'Удалить',
+    },
+    {
+      id: 'popup_add_chat',
+      title: 'Добаваить чат',
+      buttonId: 'add_chat',
+      buttonText: 'Добавить',
+      addChat: true,
+    },
+    {
+      id: 'popup_remove_chat',
+      title: 'Удалить чат',
+      username: 'ivanivanov',
+      buttonId: 'remove_chat',
+      buttonText: 'Удалить',
+      deleteChat: true,
     },
   ],
   chats: [
@@ -449,3 +483,18 @@ export const chatParams: PropsWithChildren = {
     },
   ],
 };
+
+export const monthForDate: string[] = [
+  'Января',
+  'Февраля',
+  'Марта',
+  'Апреля',
+  'Мая',
+  'Июня',
+  'Июля',
+  'Августа',
+  'Сентября',
+  'Октября',
+  'Ноября',
+  'Декабря',
+];

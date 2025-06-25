@@ -4,16 +4,9 @@ import ChatHeader from '../chatHeader/chatHeader';
 import ChatMenu from '../chatMenu/chatMenu';
 import ChatWindow from '../chatWindow/chatWindow';
 
-/*
-Напоминалка на потом, чтобы поменять загрузку чата и возможную отправку сообщений
-Можно переработать сборку чата и сделать всё по красоте, а не просто вот один рендер
-Типа загрузка сообщений, может даже добавка сообщений и т.д.
-*/
-
 export default class Chat extends Block {
   constructor(props:PropsWithChildren) {
     delete props.events;
-    console.log(props);
     if (props.isChatChosen) {
       super({
         ...props,
