@@ -21,7 +21,6 @@ export default class Profile extends Block {
 
   constructor(props:PropsWithChildren) {
     checkIfLoggedOut();
-    console.log(props);
     super({
       ...props,
 
@@ -99,9 +98,6 @@ export default class Profile extends Block {
 
   changePassword(data:Iargs) {
     this.userApi.changePassword(data)
-      .then((data:unknown) => {
-        console.log(data);
-      })
       .catch((err: Error) => {
         is500Error(err);
         is401Error(err);

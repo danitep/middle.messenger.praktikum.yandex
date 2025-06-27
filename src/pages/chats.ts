@@ -2,8 +2,6 @@ import chatApi, { ChatAPI } from '../api/chatApi';
 import userApi, { UserAPI } from '../api/userApi';
 import Chat from '../components/chat/chat';
 import ChatHeader from '../components/chatHeader/chatHeader';
-import Chatlabel from '../components/chatLabel/chatLabel';
-// import Chatlabel from '../components/chatLabel/chatLabel';
 import ChatList from '../components/chatList/chatList';
 import ChatMenu from '../components/chatMenu/chatMenu';
 import ChatPack from '../components/chatPack/chatPack';
@@ -16,6 +14,9 @@ import Block from '../framework/Block';
 import { Iargs } from '../utils/apiInterfaces';
 import { PropsWithChildren } from '../utils/blockInterfaces';
 import {
+  chatListPropsFilter, chatLoader, chatPropsFilter, chatsParser, debounce,
+} from '../utils/chatFunctions';
+import {
   checkIfLoggedOut,
   createZeroTimeDate,
   is401Error,
@@ -23,72 +24,6 @@ import {
 } from '../utils/extraFunctions';
 import { monthForDate } from '../utils/pageVariables';
 import store, { Store } from '../utils/store';
-
-const chatListPropsFilter = (key: string):boolean => key === 'chatList' || key === 'profileLink';
-const chatPropsFilter = (key: string):boolean => key === 'isChatChosen' || key === 'openedChat' || key === 'profileLink';
-
-const chatsParser = (data:PropsWithChildren[]) => {
-  const intialChatArray:PropsWithChildren[] = data;
-  const chatListArray:PropsWithChildren[] = [];
-  const chatArray:PropsWithChildren[] = [];
-  intialChatArray.forEach((chatInfoElement:PropsWithChildren) => {
-    const chatListElement:PropsWithChildren = {};// сбор данных для chatList
-    chatListElement.id = chatInfoElement.id;
-    chatListElement.hasNewMessages = (chatInfoElement.unread_count as number) > 0;
-    chatListElement.imagePath = chatInfoElement.avatar ? chatInfoElement.avatar : '';
-    chatListElement.isTooManyMessages = (chatInfoElement.unread_count as number) > 99;
-    chatListElement.name = chatInfoElement.title;
-    chatListElement.newMessagesCount = chatInfoElement.unread_count;
-    chatListArray.push(chatListElement);
-    // Т.к. новое сообщение не добавить, то добаивить данные элементы не сможем
-    // chatListElement.isMyMessage = false;
-    // chatListElement.lastMessage = (chatInfoElement.last_message as PropsWithChildren).content ? (chatInfoElement.last_message as PropsWithChildren).content : '';
-    // chatListElement.lastMessageTime = checkTime((chatInfoElement.last_message as PropsWithChildren).time as string);
-
-    // Т.к. нет запроса для загрузки чата, то возьмём, что есть
-
-    const chatElement:PropsWithChildren = {};// заполняем chats
-    chatElement.id = chatInfoElement.id;
-    chatElement.imagePath = chatInfoElement.avatar;
-    chatElement.isAddActive = false;
-    chatElement.isSettingsActive = false;
-    chatElement.name = chatInfoElement.title;
-    chatElement.packs = [{
-      messages: [],
-    }];
-    chatArray.push(chatElement);
-  });
-
-  return [chatListArray, chatArray];
-};
-
-const chatLoader = (data: PropsWithChildren[], self:ChatPage) => { // загружаем новый список чатов
-  const [chatListArray, chatArray] = chatsParser(data as PropsWithChildren[]);
-
-  // Некрасивый, но рабочий вариант перерендерить список, но при этом сменить props для chatPage
-  self.props.chatList = chatListArray;
-  self.props.chats = chatArray;
-
-  const newProps = self.props as PropsWithChildren;
-  const propsForChatList:PropsWithChildren = Object.keys(newProps).filter((key:string) => chatListPropsFilter(key)).reduce((obj: PropsWithChildren, key:string) => {
-    obj[key] = newProps[key];
-    return obj;
-  }, {});
-
-  const changedChatLabel = { // делаем новые плитки чатов в списке
-    noMatch: (propsForChatList.chatList as PropsWithChildren[]).length === 0,
-    chatLabelElements: (propsForChatList.chatList as PropsWithChildren[]).map((chatData:PropsWithChildren):Chatlabel => new Chatlabel({ params: chatData })),
-  };
-
-  const events = {
-    events: {
-      select_chat: self.onChatSelect.bind(self),
-      subMenuCall: self.onSubMenuCall.bind(self),
-    },
-  };
-  Object.assign(propsForChatList, changedChatLabel, events);
-  self.children.chatList.children.chatListElement.setProps(propsForChatList);
-};
 
 export default class ChatPage extends Block {
   chatApi: ChatAPI;
@@ -162,7 +97,7 @@ export default class ChatPage extends Block {
             select_chat: this.onChatSelect.bind(this),
             'add-remove_click': this.onAddRemoveRowClick.bind(this),
             click: (newProps.events as PropsWithChildren).click,
-            search: this.onChatSearch.bind(this),
+            search: this.chatSearchDebounced.bind(this),
             subMenuCall: this.onSubMenuCall.bind(this),
           },
         };
@@ -201,7 +136,6 @@ export default class ChatPage extends Block {
     await this.userApi.findUser({ login })
       .then((data:PropsWithChildren[]) => {
         const user = data.find((user) => user.login === login);
-        console.log(user);
         const users = [];
         users.push(user?.id);
 
@@ -287,6 +221,8 @@ export default class ChatPage extends Block {
         console.log(err);
       });
   }
+
+  chatSearchDebounced = debounce(this.onChatSearch.bind(this)); // создали защищённую (от повторного вызова) функцию
 
   onAddRemoveRowClick(e:Event) { // для обработки кнопок малых popup'ов в чате
     const targetId = (e.target as HTMLElement).id ? (e.target as HTMLElement).id : (e.target as HTMLElement).parentElement?.id;
@@ -392,12 +328,9 @@ export default class ChatPage extends Block {
             },
           });
 
-          console.log(chosenChat.id);
           this.chatApi.getChatToken({ id: chosenChat.id })
             .then((data:Iargs) => {
-              console.log(data);
               this.store.setState('token', data.token);
-              console.log(this.store.getState());
               const storeState = this.store.getState();
               const socket = new WebSocket(`wss://ya-praktikum.tech/ws/chats/${storeState.userInfo.id}/${storeState.clickedChatId}/${storeState.token}`);
 
@@ -423,7 +356,6 @@ export default class ChatPage extends Block {
 
   sendMessage(message:string) { // для отправки сообщения в чат
     const { webSocket } = this.store.getState();
-    console.log(message);
     webSocket.send(JSON.stringify({
       content: message,
       type: 'message',
@@ -432,8 +364,7 @@ export default class ChatPage extends Block {
 
   addWebSocketListeners = () => {
     const socket:WebSocket = store.getState().webSocket;
-    socket.addEventListener('open', (event) => {
-      console.log(event);
+    socket.addEventListener('open', () => {
       console.log('Соединение установлено');
 
       const interval = setInterval(() => {
@@ -457,7 +388,6 @@ export default class ChatPage extends Block {
     socket.addEventListener('message', (event) => {
     // по сути тут надо будет вставить какую-то самодельную функцию,
     // которая будет добавлять новые сообщения в чат
-      console.log('Получены данные', event.data);
       this.parseWebSocketMessages(event.data);
     });
 
@@ -470,16 +400,15 @@ export default class ChatPage extends Block {
   parseWebSocketMessages = (data:string) => {
     // приходит строка JSON, надо распарсить
     const acceptedData:Iargs&Iargs[] = JSON.parse(data);
-    console.log(acceptedData);
     if (Array.isArray(acceptedData) && (acceptedData as Iargs[]).length !== 0) { // разбираем массив сообщений
-      console.log(this.children.chat.children.chatWindow);
       const packs:Iargs = this.createPacks(acceptedData);
       this.renderChatMessages(packs);
     } else if (acceptedData.type === 'message') { // добавляем одно сообщение в конце
       // добавляем в конце, опять же смотрим по packReferences
       const packs:Iargs = this.addNewMessageToChat(acceptedData);
       this.renderChatMessages(packs);
-      console.log(acceptedData.content);
+    } else if (acceptedData.type === 'pong') {
+      console.log('соединение продлено');
     } else { // вдруг что-то пропустил
       console.log(acceptedData);
     }
@@ -508,12 +437,10 @@ export default class ChatPage extends Block {
     } else {
       messageDateString = `${dateArray[2]} ${monthForDate[messageDate.getMonth()]}, ${dateArray[3]}`;
     }
-    // console.log(messageDateString);
     return messageDateString;
   };
 
   createPacks = (messageArray:Iargs[]) => {
-    console.log(this.children.chat.children.chatWindow.props);
     let packs:Iargs[] = []; // создали массив наборов
     let pack:Iargs = {}; // типа создаём набор, если сменится дата, то стираем набор и пишем заново.
     let isLastPackChecked = false;
@@ -570,13 +497,15 @@ export default class ChatPage extends Block {
       };
       messageObject.isMessageMine = message.user_id === userInfo.id;
       if (isMyMessage !== messageObject.isMessageMine) { // если старое значение отличается, то надо заменить и указать, что сменилась сторона
-        if (packs.length !== 0) {
+        if (pack.messages.length !== 0) {
           messageObject.isSideChanged = true;
         }
         isMyMessage = messageObject.isMessageMine;
       }
-      messageObject.isRead = message.is_read;
-      if (!message.file) {
+      if (messageObject.isMessageMine) { // Отметка о прочитанном сообщении польщователя
+        messageObject.isRead = message.is_read;
+      }
+      if (!message.file) { // записываем текст
         messageObject.isText = true;
         messageObject.content.text = message.content;
       }
@@ -591,10 +520,7 @@ export default class ChatPage extends Block {
     return packs;
   };
 
-  // поправить функцию, типа загрузка сообщения
-  // в наборы, заменить foreach
   addNewMessageToChat = (newMessage: Iargs) => {
-    console.log(this.children.chat.children.chatWindow.props);
     let packs:Iargs[] = []; // создали массив наборов
     let pack:Iargs = {}; // типа создаём набор, если сменится дата, то стираем набор и пишем заново.
     let isLastPackChecked = false;
@@ -611,7 +537,11 @@ export default class ChatPage extends Block {
     let packDate:string = ''; // для каждого набора ставим свою дату, меняем в случае если поменялась и отправляем набор в массив
     let messageObject:Iargs = {}; // заготовка
     const { userInfo } = this.store.getState();
-    let isMyMessage:boolean = false;
+    let isLastMessageMine:boolean = false;
+    if (packs.length !== 0) {
+      const lastPack = packs[packs.length - 1];
+      isLastMessageMine = lastPack.messages[lastPack.messages.length - 1].isMessageMine;
+    }
 
     // собираем набор
     const messageDate = this.compareTime(newMessage.time);
@@ -649,15 +579,17 @@ export default class ChatPage extends Block {
         imageLink: '', // ссылка на картинку, если должна быть
       },
     };
+
     messageObject.isMessageMine = newMessage.user_id === userInfo.id;
-    if (isMyMessage !== messageObject.isMessageMine) { // если старое значение отличается, то надо заменить и указать, что сменилась сторона
-      if (packs.length !== 0) {
-        messageObject.isSideChanged = true;
-      }
-      isMyMessage = messageObject.isMessageMine;
+    if (isLastMessageMine !== messageObject.isMessageMine) { // если старое значение отличается, то надо заменить и указать, что сменилась сторона
+      if (pack.messages.length > 0) { // если набор не пустой
+        pack.messages[pack.messages.length - 1].isSideChanged = true;
+      } // если сообщение в другом наборе, то там итак есть разрыв
     }
-    messageObject.isRead = newMessage.is_read;
-    if (!newMessage.file) {
+    if (messageObject.isMessageMine) { // Отметка о прочитанном сообщении польщователя
+      messageObject.isRead = newMessage.is_read;
+    }
+    if (!newMessage.file) { // записываем текст
       messageObject.isText = true;
       messageObject.content.text = newMessage.content;
     }
@@ -681,16 +613,14 @@ export default class ChatPage extends Block {
   };
 
   renderChatMessages(packs:Iargs) { // для отображения сообщений
-    console.log(packs);
     const packsObjects:ChatPack[] = [];
     packs.forEach((pack:PropsWithChildren) => {
       packsObjects.push(new ChatPack(pack));
     });
     this.children.chat.children.chatWindow.setProps({ packs: packsObjects, packReferences: packs });
     this.children.chat.children.chatWindow.render();
-    console.log(this.children.chat.children.chatWindow);
-    const chatWindow = document.querySelector('.chat__window');
-    chatWindow?.scrollIntoView(false);
+    const chatMessages = document.querySelectorAll('.chat-message');
+    chatMessages[chatMessages.length - 1]?.scrollIntoView(true);
   }
 
   override render(): string {

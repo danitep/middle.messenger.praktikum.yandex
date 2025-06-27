@@ -27,9 +27,7 @@ export class AuthAPI extends BaseAPI {
         if ((res as XMLHttpRequest).status >= 400) {
           throwError(res);
         }
-        console.log(res);
         const data = JSON.parse((res as XMLHttpRequest).response);
-        console.log(data);
         return data;
       });// напоминалка: после каждого вызова функции прописываем then, catch или finally, и в них обрабатываем
   }
@@ -40,9 +38,7 @@ export class AuthAPI extends BaseAPI {
         if ((res as XMLHttpRequest).status >= 400) {
           throwError(res);
         }
-        console.log(res);
         const data = JSON.parse((res as XMLHttpRequest).response);
-        console.log(data);
         return data;
       });// напоминалка: после каждого вызова функции прописываем then, catch или finally, и в них обрабатываем
   }
@@ -53,7 +49,6 @@ export class AuthAPI extends BaseAPI {
         if ((res as XMLHttpRequest).status >= 400) {
           throwError(res);
         }
-        console.log(res);
         return (res as XMLHttpRequest).response;
       });// напоминалка: после каждого вызова функции прописываем then, catch или finally, и в них обрабатываем
   }
@@ -68,7 +63,6 @@ export class AuthAPI extends BaseAPI {
         if ((res as XMLHttpRequest).status >= 400) {
           throwError(res);
         }
-        console.log(res);
         return (res as XMLHttpRequest).response;
       });
   }

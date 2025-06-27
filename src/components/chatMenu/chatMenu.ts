@@ -39,8 +39,6 @@ export default class ChatMenu extends Block {
         input.value = '';
       });
 
-      // пока не сделана связь с сервером, то просто затычка
-      console.log(submitValue);
       ((this.props.messageSendFunction as Props).sendMessage as Function)(submitValue.message);
     }
   }

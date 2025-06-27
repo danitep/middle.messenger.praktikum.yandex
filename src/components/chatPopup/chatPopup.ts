@@ -51,19 +51,6 @@ export default class ChatPopup extends Block {
       }
     }
     this._element?.classList.remove('chat-popup__layout_active');
-    /*
-    const input = form.querySelector('input');
-    const submitValue: {[key: string]: string } = {};
-
-    console.log(input?.value);
-    if (input?.value) { // заготовка на потом, если вдруг пустое значение нельзя отправлять
-      submitValue[`${input.name}`] = input.value;
-      console.log(submitValue);
-      this._element?.classList.remove('chat-popup__layout_active');
-    }
-    // пока не сделана связь с сервером, то просто затычка
-
-    */
   }
 
   onLayoutClick(e:Event) {

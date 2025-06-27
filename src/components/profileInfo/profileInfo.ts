@@ -45,7 +45,6 @@ export default class ProfileInfo extends Block {
       },
     };
     const propsWithEvents = Object.assign(newProps, additionalProps, events);
-    console.log(propsWithEvents);
     this.setProps(propsWithEvents);
   }
 
@@ -152,7 +151,6 @@ export default class ProfileInfo extends Block {
       events: (this.props as PropsWithChildren).events,
     };
     newProps = Object.assign(newProps, profileForm, events);
-    console.log(newProps);
     this.setProps(newProps);
     // this.render();
   }

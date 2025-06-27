@@ -1,5 +1,6 @@
 import Block from '../../framework/Block';
 import { PropsWithChildren } from '../../utils/blockInterfaces';
+import store from '../../utils/store';
 
 type PlainObject<T = unknown> = {
   [key: string]: T;
@@ -97,6 +98,11 @@ export default class Route {
   }
 
   render() {
+    const webSocketToClose = store.getState().webSocket; // на случай, чтобы соединение не висело после перехода на другую страницу
+    if (webSocketToClose instanceof WebSocket) {
+      webSocketToClose.close(); // закрываем существующее соединение
+      console.log(`close socket ${webSocketToClose.url}`);
+    }
     this._block = new this._blockClass(this._props);
     render(this._props.rootQuery as string, this._block);
   }

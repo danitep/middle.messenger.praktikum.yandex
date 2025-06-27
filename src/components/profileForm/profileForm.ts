@@ -35,7 +35,6 @@ const createChildren = (props: PropsWithChildren) => {
       events: {
         blur: (e:Event) => {
           const input = e.target as HTMLInputElement;
-          console.log(input.validity);
           if (!input.validity.valid) {
             (e.target as HTMLInputElement).className = 'profile__input profile__input_errored';
           } else {
@@ -64,19 +63,6 @@ export default class ProfileForm extends Block {
       profileRows,
       buttons,
     });
-
-    const newProps = props;
-    console.log(newProps);
-    /*
-    const events = {
-      events: {
-        click_button: this.changeForm.bind(this),
-      },
-    };
-    const propsWithEvents = Object.assign(newProps, additionalProps, events);
-    console.log(propsWithEvents);
-    this.setProps(propsWithEvents);
-    */
   }
 
   override render(): string {

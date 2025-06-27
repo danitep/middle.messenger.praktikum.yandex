@@ -76,17 +76,15 @@ export default class Form extends Block {
           errortext.textContent = 'Некорректный пароль';
           for (let i = 0; i < inputs.length - 1; i += 1) { // убрали один, чтобы не отправлять повтор пароля
             const input = inputs[i];
+            console.log(`${input.name}:${input.value}`);
             submitValue[input.name] = input.value;
           }
           this.authApi.register(submitValue)
             .then((data:{id: string}):void => {
-              console.log(data);
               store.setState('userId', data.id);
               this.authApi.getUserInfo()
                 .then((data:{[key:string]: string}):void => {
-                  console.log(data);
                   store.setState('userInfo', data);
-                  console.log(store.getState());
                   this.router.go('/messenger');
                 })
                 .catch((err: Error) => {
@@ -110,9 +108,7 @@ export default class Form extends Block {
           .then(():void => {
             this.authApi.getUserInfo()
               .then((data:{[key:string]: string}):void => {
-                console.log(data);
                 store.setState('userInfo', data);
-                console.log(store.getState());
                 this.router.go('/messenger');
               })
               .catch((err: Error) => {
