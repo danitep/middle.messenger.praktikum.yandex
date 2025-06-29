@@ -2,6 +2,7 @@ import authApi, { AuthAPI } from '../../api/authApi';
 import Block from '../../framework/Block';
 import { Props, PropsWithChildren } from '../../utils/blockInterfaces';
 import { is500Error } from '../../utils/extraFunctions';
+import store from '../../utils/store';
 import ProfileForm from '../profileForm/profileForm';
 import router, { Router } from '../router/router';
 
@@ -53,6 +54,9 @@ export default class ProfileInfo extends Block {
     if (e.target) {
       const newPath:string = (e.target as HTMLAnchorElement).pathname;
       await this.authApi.logout()
+        .then(() => {
+          store.clearStore();
+        })
         .catch((err: Error) => {
           is500Error(err);
           console.log(err);

@@ -76,7 +76,6 @@ export default class Form extends Block {
           errortext.textContent = 'Некорректный пароль';
           for (let i = 0; i < inputs.length - 1; i += 1) { // убрали один, чтобы не отправлять повтор пароля
             const input = inputs[i];
-            console.log(`${input.name}:${input.value}`);
             submitValue[input.name] = input.value;
           }
           this.authApi.register(submitValue)

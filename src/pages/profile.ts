@@ -108,7 +108,7 @@ export default class Profile extends Block {
   createNewProps(props: PropsWithChildren) {
     const newProps = props;
     const storeInfo = this.store.getState();
-    newProps.avatarTempPath = `https://ya-praktikum.tech/api/v2/resources/${storeInfo.userInfo.avatar}`;
+    newProps.avatarTempPath = `https://ya-praktikum.tech/api/v2/resources/${storeInfo.userInfo?.avatar || ''}`;
     newProps.username = storeInfo.userInfo.first_name;
     (newProps.profileRowsData as Props[]).forEach((rowData: Props) => {
       if (rowData.name === 'display_name') {

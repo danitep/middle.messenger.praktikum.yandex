@@ -59,8 +59,9 @@ export class Store {
     localStorage.setItem('store', JSON.stringify(this.getState()));
   }
 
-  public clearLocalStorage() {
-    localStorage.setItem('store', JSON.stringify({}));
+  public clearStore() {
+    localStorage.clear();
+    this.state = {};
   }
 }
 

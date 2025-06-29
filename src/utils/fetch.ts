@@ -20,7 +20,7 @@ function queryStringify(data: string) {
 
   // Здесь достаточно и [object Object] для объекта
   const keys = Object.keys(data);
-  return keys.reduce((result, key, index) => `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`, '?');
+  return keys.reduce((result, key, index) => `${result}${key}=${encodeURIComponent(data[key])}${index < keys.length - 1 ? '&' : ''}`, '?');
 }
 
 export class HTTP {
