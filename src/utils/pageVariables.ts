@@ -241,12 +241,14 @@ export const chatParams: PropsWithChildren = {
     buttons: [
       {
         imageLink: '../../src/static/add_user.svg',
+        image_id: 'add',
         buttonText: 'Создать чат',
         popoverTarget: 'submenu',
         id: 'add_chat',
       },
       {
         imageLink: '../../src/static/remove_user.svg',
+        image_id: 'remove',
         buttonText: 'Удалить чат',
         popoverTarget: 'submenu',
         id: 'remove_chat',
@@ -261,12 +263,14 @@ export const chatParams: PropsWithChildren = {
       buttons: [
         {
           imageLink: '../../src/static/add_user.svg',
+          image_id: 'add',
           buttonText: 'Добавить пользователя',
           popoverTarget: 'popup_settings',
           id: 'add_user',
         },
         {
           imageLink: '../../src/static/remove_user.svg',
+          image_id: 'remove',
           buttonText: 'Удалить пользователя',
           popoverTarget: 'popup_settings',
           id: 'remove_user',
@@ -280,18 +284,21 @@ export const chatParams: PropsWithChildren = {
       buttons: [
         {
           imageLink: '../../src/static/add_media.svg',
+          image_id: 'add_media',
           buttonText: 'Фото или Видео',
           popoverTarget: 'popup_add_data',
           id: 'add_media',
         },
         {
           imageLink: '../../src/static/add_file.svg',
+          image_id: 'add_file',
           buttonText: 'Файл',
           popoverTarget: 'popup_add_data',
           id: 'add_file',
         },
         {
           imageLink: '../../src/static/add_location.svg',
+          image_id: 'add_location',
           buttonText: 'Локация',
           popoverTarget: 'popup_add_data',
           id: 'add_geo',

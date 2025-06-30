@@ -20,6 +20,26 @@
         padding: 0;
         width: 22px;
         aspect-ratio: 1;
+
+        &#add{
+            background: center no-repeat url("../../static/add_user.svg");
+        }
+
+        &#remove{
+            background: center no-repeat url("../../static/remove_user.svg");
+        }
+
+        &#add_media{
+            background: center no-repeat url("../../static/add_media.svg");
+        }
+
+        &#add_file{
+            background: center no-repeat url("../../static/add_file.svg");
+        }
+
+        &#add_location{
+            background: center no-repeat url("../../static/add_location.svg");
+        }
     }
 
     &__text{

@@ -24,7 +24,7 @@ export default class ChatListContainer extends Block {
 
   override render(): string {
     return `
-        <ul class="chat-list__list">
+        <ul class="chat-list__list {{#if noMatch}}chat-list__list_empty{{/if}}">
             {{#if noMatch}}
 
             {{else}}

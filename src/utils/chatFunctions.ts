@@ -79,4 +79,5 @@ export const chatLoader = (data: PropsWithChildren[], self:ChatPage) => { // Ð·Ð
   };
   Object.assign(propsForChatList, changedChatLabel, events);
   self.children.chatList.children.chatListElement.setProps(propsForChatList);
+  console.log(self.children.chatList.children.chatListElement);
 };

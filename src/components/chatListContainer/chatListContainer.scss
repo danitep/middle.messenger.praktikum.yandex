@@ -7,5 +7,9 @@
         align-items: center;
         width: 100%;
         overflow: auto;
+
+        &_empty{
+            height: 100%;
+        }
     }
 }

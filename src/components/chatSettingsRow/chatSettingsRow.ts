@@ -15,7 +15,7 @@ export default class ChatSettingsRow extends Block {
         popovertargetaction="hide"
         id="{{params.id}}"
         >
-            <img class="additional-popup__image" src="{{params.imageLink}}"/>
+            <div class="additional-popup__image" id="{{params.image_id}}"></div>
             <p class="additional-popup__text">{{params.buttonText}}</p>
         </button>
         `;

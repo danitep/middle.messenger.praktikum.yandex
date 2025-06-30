@@ -115,7 +115,8 @@ export default class Block {
             button.addEventListener('click', events[eventName]);
           });
         } else if (eventName === 'subMenuCall') {
-          const labels = this._element.querySelectorAll('.chat-label__container');
+          const labels = document.querySelectorAll('.chat-list__list');
+          console.log(labels);
           labels.forEach((label) => {
             label.addEventListener('contextmenu', events[eventName]);
           });
