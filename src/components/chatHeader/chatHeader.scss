@@ -1,13 +1,13 @@
 .chat-header{
-    margin: 10px 20px 0 20px;
-    padding: 0 0 10px 0;
+    margin: 10px 20px 0;
+    padding: 0 0 10px;
     border-bottom: 1px solid #eaeaea;
     display: flex;
     flex-direction: row;
     width: calc(100% - 2 * 20px);
 
     &__image-container{
-        margin: 0 0 auto 0;
+        margin: 0 0 auto;
         padding: 0;
         width: 34px;
         aspect-ratio: 1;
@@ -15,11 +15,13 @@
         overflow: hidden;
         background-color: #efefef;
     }
+
     &__image{
         margin: 0;
         padding: 0;
         width: 100%;
     }
+
     &__name{
         margin: 10px auto auto 10px;
         padding: 0;
@@ -28,14 +30,16 @@
         line-height: 100%;
         color: #1e1e1e;
     }
+
     &__button{
-        margin: 9.5px 11px auto auto;
+        margin: auto 0 4.5px auto;
         padding: 0;
-        width: 3px;
-        height: 16px;
+        width: 25px;
+        height: 25px;
         border: none;
+        border-radius: 50%;
         background: none;
-        background: center no-repeat url(../../static/settings.svg);
+        background: center no-repeat url("../../static/settings.svg");
 
         &_active{
             margin: auto 0 4.5px auto;
@@ -45,7 +49,7 @@
             border: none;
             border-radius: 50%;
             background: none;
-            background: #f5f5f5 center no-repeat url(../../static/settings_active.svg);
+            background: #f5f5f5 center no-repeat url("../../static/settings_active.svg");
         }
     }
 }

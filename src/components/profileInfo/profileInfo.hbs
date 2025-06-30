@@ -3,7 +3,11 @@
         <button class="profile__change">
             <p >Поменять<br/>аватар</p>
         </button>  
-        <img class="profile__image" src={{params.avatarTempPath}} alt="Аватар">
+        <input type="image" 
+        name="avatar" 
+        class="profile__image" 
+        src={{params.avatarTempPath}} 
+        alt="Аватар">
     </div>
 
     {{#if params.isPasswordEditable}}
