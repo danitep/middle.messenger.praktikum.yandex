@@ -8,3 +8,38 @@
 [build]
   publish = "dist"
 
+[[redirects]]
+  from = "/messenger"
+  to = "/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/settings"
+  to = "/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/err404"
+  to = "/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/err5xx"
+  to = "/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/sign-up"
+  to = "/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/main"
+  to = "/"
+  status = 200
+  force = true
