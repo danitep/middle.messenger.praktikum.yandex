@@ -18,7 +18,11 @@ export default class ProfileRow extends Block {
                 name="{{params.name}}" 
                 onChange={}
                 placeholder="{{params.placeholder}}"
+                {{#if params.value}}
                 value={{params.value}}
+                {{else}}
+                value=''
+                {{/if}}
                 required
 
                 {{#if params.pattern}}

@@ -95,7 +95,10 @@ export default class Block {
             input.addEventListener('keyup', events[eventName]);
           });
         } else if (eventName === 'select_chat') {
-          this._element.querySelector('.chat-list__list')?.addEventListener('click', events[eventName]);
+          const labels = this._element.querySelectorAll('.chat-label__container');
+          labels.forEach((label) => {
+            label.addEventListener('click', events[eventName]);
+          });
         } else if (eventName === 'chat_button_click') {
           const buttons = this._element.querySelectorAll('button[type="button"]');
           buttons.forEach((button) => {
@@ -110,6 +113,12 @@ export default class Block {
           const buttons = this._element.querySelectorAll('.additional-popup > .additional-popup__button');
           buttons.forEach((button) => {
             button.addEventListener('click', events[eventName]);
+          });
+        } else if (eventName === 'subMenuCall') {
+          const labels = document.querySelectorAll('.chat-list__list');
+          console.log(labels);
+          labels.forEach((label) => {
+            label.addEventListener('contextmenu', events[eventName]);
           });
         } else { // затычка, если что-то забыл обработать (удалить в конце)
           const message: {[key: string]: () => {}} = {};
@@ -285,5 +294,19 @@ export default class Block {
       return document.createElement(tagName) as HTMLTemplateElement;
     }
     return document.createElement(tagName);
+  }
+
+  show() {
+    const element = this.getContent();
+    if (element) {
+      element.style.display = 'block';
+    }
+  }
+
+  hide() {
+    const element = this.getContent();
+    if (element) {
+      element.style.display = 'none';
+    }
   }
 }

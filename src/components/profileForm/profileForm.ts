@@ -35,7 +35,6 @@ const createChildren = (props: PropsWithChildren) => {
       events: {
         blur: (e:Event) => {
           const input = e.target as HTMLInputElement;
-          console.log(input.validity);
           if (!input.validity.valid) {
             (e.target as HTMLInputElement).className = 'profile__input profile__input_errored';
           } else {

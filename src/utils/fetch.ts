@@ -20,21 +20,32 @@ function queryStringify(data: string) {
 
   // Здесь достаточно и [object Object] для объекта
   const keys = Object.keys(data);
-  return keys.reduce((result, key, index) => `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`, '?');
+  return keys.reduce((result, key, index) => `${result}${key}=${encodeURIComponent(data[key])}${index < keys.length - 1 ? '&' : ''}`, '?');
 }
 
-export default class HTTPTransport {
-  get = (url:string, options:Options = { method: METHOD.GET }) => this.request(url, { ...options, method: METHOD.GET }, options.timeout);
+export class HTTP {
+  url: string;
 
-  post = (url:string, options:Options = { method: METHOD.POST }) => this.request(url, { ...options, method: METHOD.POST }, options.timeout);
+  constructor(url:string) {
+    this.url = url;
+  }
 
-  put = (url:string, options:Options = { method: METHOD.PUT }) => this.request(url, { ...options, method: METHOD.PUT }, options.timeout);
+  get = (path:string, options?:OptionsWithoutMethod) => this.request(this.url + path, { ...options, method: METHOD.GET }, options?.timeout);
 
-  delete = (url:string, options:Options = { method: METHOD.DELETE }) => this.request(url, { ...options, method: METHOD.DELETE }, options.timeout);
+  post = (path:string, options?:OptionsWithoutMethod) => this.request(this.url + path, { ...options, method: METHOD.POST }, options?.timeout);
+
+  put = (path:string, options?:OptionsWithoutMethod) => this.request(this.url + path, { ...options, method: METHOD.PUT }, options?.timeout);
+
+  delete = (path:string, options?:OptionsWithoutMethod) => this.request(this.url + path, { ...options, method: METHOD.DELETE }, options?.timeout);
 
   request = (url:string, options = {}, timeout = 5000) => {
-    const { headers = {}, method, data } = options as OptionsWithoutMethod;
-
+    const {
+      headers = {},
+      method,
+      data,
+      formData,
+      credentials,
+    } = options as OptionsWithoutMethod;
     return new Promise((resolve, reject) => {
       if (!method) {
         reject(new Error('No method'));
@@ -65,11 +76,18 @@ export default class HTTPTransport {
       xhr.timeout = timeout;
       xhr.ontimeout = reject;
 
-      if (isGet || !data) {
+      xhr.withCredentials = !!credentials;
+      if (formData) {
+        xhr.send(formData);
+      } else if (isGet || (!data && !formData)) {
         xhr.send();
       } else {
-        xhr.send(data);
+        const json = JSON.stringify(data);
+        xhr.send(json);
       }
     });
   };
 }
+
+const apiInstance = new HTTP('https://ya-praktikum.tech/api/v2/');
+export default apiInstance;

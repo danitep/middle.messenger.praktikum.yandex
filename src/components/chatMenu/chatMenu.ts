@@ -1,5 +1,5 @@
 import Block from '../../framework/Block';
-import { PropsWithChildren } from '../../utils/blockInterfaces';
+import { Props, PropsWithChildren } from '../../utils/blockInterfaces';
 
 export default class ChatMenu extends Block {
   constructor(props:PropsWithChildren) {
@@ -39,8 +39,7 @@ export default class ChatMenu extends Block {
         input.value = '';
       });
 
-      // пока не сделана связь с сервером, то просто затычка
-      console.log(submitValue);
+      ((this.props.messageSendFunction as Props).sendMessage as Function)(submitValue.message);
     }
   }
 
@@ -58,7 +57,7 @@ export default class ChatMenu extends Block {
                     required
                        
                     minLength=1/>
-                <button class="chat__submit" type="submit"></button>
+                <button id="message_send" class="chat__submit" type="submit"></button>
             </form>
         </div>
         `;

@@ -14,7 +14,7 @@ export default class ChatListContainer extends Block {
       }));
     });
     super({
-      noMatch: false,
+      noMatch: (props.chatList as PropsWithChildren[]).length === 0,
       chatLabelElements,
       backup: {
         allLabels: chatLabelElements,
@@ -24,7 +24,7 @@ export default class ChatListContainer extends Block {
 
   override render(): string {
     return `
-        <ul class="chat-list__list">
+        <ul class="chat-list__list {{#if noMatch}}chat-list__list_empty{{/if}}">
             {{#if noMatch}}
 
             {{else}}

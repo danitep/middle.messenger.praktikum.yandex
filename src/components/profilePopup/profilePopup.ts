@@ -52,16 +52,16 @@ export default class ProfilePopup extends Block {
   onSubmit(e:Event) {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
     const input = form.querySelector('input');
     const errortext = this._element?.querySelector('.popup__error');
 
     if (input?.files && errortext) {
       if (input.files.length > 0) {
-        console.log(input.files);
+        (this.props.loadAvatar as Function)(formData);
         this._changeProps('isOpened', false);
       } else if (input.files.length === 0) { // если пусто - ошибка
         errortext.className = 'popup__error';
-        console.log(errortext);
       }
     }
     // пока не сделана связь с сервером, то просто затычка
