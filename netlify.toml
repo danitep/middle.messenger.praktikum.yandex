@@ -9,7 +9,7 @@
   publish = "dist"
 
 [[redirects]]
-  from = "/"
+  from = "/messenger"
   to = "https://middle-messenger-danitep.netlify.app"
   status = 200
   force = true # COMMENT: ensure that we always redirect
