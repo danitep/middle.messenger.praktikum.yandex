@@ -284,21 +284,21 @@ export const chatParams: PropsWithChildren = {
       buttons: [
         {
           imageLink: '../../src/static/add_media.svg',
-          image_id: 'add_media',
+          image_id: 'add-media',
           buttonText: 'Фото или Видео',
           popoverTarget: 'popup_add_data',
           id: 'add_media',
         },
         {
           imageLink: '../../src/static/add_file.svg',
-          image_id: 'add_file',
+          image_id: 'add-file',
           buttonText: 'Файл',
           popoverTarget: 'popup_add_data',
           id: 'add_file',
         },
         {
           imageLink: '../../src/static/add_location.svg',
-          image_id: 'add_location',
+          image_id: 'add-location',
           buttonText: 'Локация',
           popoverTarget: 'popup_add_data',
           id: 'add_geo',
