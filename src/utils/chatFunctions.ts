@@ -4,7 +4,7 @@ import { PropsWithChildren } from './blockInterfaces';
 import { DebounceFunc } from './extraInterfaces';
 
 export const debounce = (f: DebounceFunc) => { // Защита от многократного вызова
-  let lastTimeout: number;
+  let lastTimeout: ReturnType<typeof setTimeout>;
   return (e:Event) => { // возвращаем функцию, которая вызывает нужную функцию с задержкой
     if (lastTimeout) { // если ещё раз вызвали стираем старое, делаем новое
       clearTimeout(lastTimeout);

@@ -18,8 +18,11 @@
       "sourceMap": true,
       "strictNullChecks": true 
     },
+    "ts-node": {
+      "experimentalSpecifierResolution": "node",
+    },
     "include": [
       "src/**/*.ts",
       ".eslintrc"
-    ]
+, "src/components/router/router.spec.ts"    ]
 }

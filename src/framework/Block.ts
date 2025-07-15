@@ -120,6 +120,8 @@ export default class Block {
           labels.forEach((label) => {
             label.addEventListener('contextmenu', events[eventName]);
           });
+        } else if (eventName === 'testClick') { // специально для тестов, потому что функции добавляются "индивидуально"
+          this._element.addEventListener('click', events[eventName]);
         } else { // затычка, если что-то забыл обработать (удалить в конце)
           const message: {[key: string]: () => {}} = {};
           message[eventName] = events[eventName];
@@ -296,14 +298,14 @@ export default class Block {
     return document.createElement(tagName);
   }
 
-  show() {
+  show() { // не используется, но мало ли вдруг
     const element = this.getContent();
     if (element) {
       element.style.display = 'block';
     }
   }
 
-  hide() {
+  hide() { // не используется, но мало ли вдруг
     const element = this.getContent();
     if (element) {
       element.style.display = 'none';
