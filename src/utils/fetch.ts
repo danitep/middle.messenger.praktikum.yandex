@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-vars */
+import { queryStringify } from './extraFunctions';
+
 enum METHOD {// в упор не видит, что METHOD вызывается в коде
         GET = 'GET',
         POST = 'POST',
@@ -12,16 +14,6 @@ type Options = {
 };
 
 type OptionsWithoutMethod = Omit<Options, 'method'>;
-
-function queryStringify(data: string) {
-  if (typeof data !== 'object') {
-    throw new Error('Data must be object');
-  }
-
-  // Здесь достаточно и [object Object] для объекта
-  const keys = Object.keys(data);
-  return keys.reduce((result, key, index) => `${result}${key}=${encodeURIComponent(data[key])}${index < keys.length - 1 ? '&' : ''}`, '?');
-}
 
 export class HTTP {
   url: string;

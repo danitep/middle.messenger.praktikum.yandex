@@ -12,4 +12,5 @@ global.history = jsdom.window.history;
 global.PopStateEvent = jsdom.window.PopStateEvent;
 global.Node = jsdom.window.Node;
 global.History = jsdom.window.History;
+global.XMLHttpRequest = jsdom.window.XMLHttpRequest;
 global.localStorage = jsdom.window.localStorage;
