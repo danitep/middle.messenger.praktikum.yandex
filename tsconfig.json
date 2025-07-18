@@ -19,7 +19,7 @@
       "strictNullChecks": true 
     },
     "ts-node": {
-      "experimentalSpecifierResolution": "node",
+      "experimentalSpecifierResolution": "node"
     },
     "include": [
       "src/**/*.ts",
