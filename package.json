@@ -20,7 +20,8 @@
     "lint:fix": "eslint . --ext .ts --fix",
     "lint:style": "stylelint \"**/*.scss\"",
     "lint:style:fix": "stylelint \"**/*.scss\" --fix",
-    "test": "mocha"
+    "test": "mocha",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@types/chai": "^5.2.2",
