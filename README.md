@@ -13,6 +13,7 @@
 * Установить зависимости проекта 'npm install'
 * Собрать проект можно по 'npm run build'
 * Запустить на Localhost можно по 'npm run start'
+* Запустить тесты на ряд объектов можно по 'npm run test'
 
 ## Ссылки
 
@@ -21,13 +22,13 @@ Netlify: https://middle-messenger-danitep.netlify.app
 * ссылки на страницы:
 (ссылки не обновлены, так что по ним будет открыт проект старой версии)
 
-main: https://middle-messenger-danitep.netlify.app
-page404: https://middle-messenger-danitep.netlify.app/src/pages/err404
-page500: https://middle-messenger-danitep.netlify.app/src/pages/err5xx
-profile: https://middle-messenger-danitep.netlify.app/src/pages/profile
-login: https://middle-messenger-danitep.netlify.app/src/pages/login
-signin: https://middle-messenger-danitep.netlify.app/src/pages/signin
-chats: https://middle-messenger-danitep.netlify.app/src/pages/chats
+main: https://middle-messenger-danitep.netlify.app/main (специальная страница с ссылками на другие страницы)
+page404: https://middle-messenger-danitep.netlify.app/err404
+page500: https://middle-messenger-danitep.netlify.app/err5xx
+profile: https://middle-messenger-danitep.netlify.app/settings
+login: https://middle-messenger-danitep.netlify.app/
+signin: https://middle-messenger-danitep.netlify.app/sign-up
+chats: https://middle-messenger-danitep.netlify.app/messenger
 ## Ссылка на макет
 
 Figma: https://www.figma.com/design/hbpaOyzO1jQDqeRJZyv536/Chat_external_link--Copy-?m=auto&t=wJb6pvuG84DOX3Kb-6
