@@ -2,6 +2,16 @@ import authApi from '../api/authApi';
 import router from '../components/router/router';
 import { Iargs } from './apiInterfaces';
 
+export const queryStringify = (data: {[key: string]: any}) => {
+  if (typeof data !== 'object') {
+    throw new Error('Data must be object');
+  }
+
+  // Здесь достаточно и [object Object] для объекта
+  const keys = Object.keys(data);
+  return keys.reduce((result, key, index) => `${result}${key}=${encodeURIComponent(data[key])}${index < keys.length - 1 ? '&' : ''}`, '?');
+};
+
 export const is500Error = (err:Error):void => {
   if (err.message.includes('500')) {
     router.go('/err5xx');
