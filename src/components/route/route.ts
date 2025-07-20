@@ -99,7 +99,7 @@ export default class Route {
 
   render() {
     const webSocketToClose = store.getState().webSocket; // на случай, чтобы соединение не висело после перехода на другую страницу
-    if (webSocketToClose instanceof WebSocket) {
+    if (webSocketToClose && webSocketToClose instanceof WebSocket) {
       webSocketToClose.close(); // закрываем существующее соединение
       console.log(`close socket ${webSocketToClose.url}`);
     }

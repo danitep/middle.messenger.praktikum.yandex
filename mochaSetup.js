@@ -14,3 +14,4 @@ global.Node = jsdom.window.Node;
 global.History = jsdom.window.History;
 global.XMLHttpRequest = jsdom.window.XMLHttpRequest;
 global.localStorage = jsdom.window.localStorage;
+global.WebSocket = jsdom.WebSocket;
